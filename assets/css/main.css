@@ -1,0 +1,122 @@
+/* FONT ONEST */
+@font-face {
+  font-family: "Onest";
+  src: url("../fonts/Onest-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Onest";
+  src: url("../fonts/Onest-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Onest";
+  src: url("../fonts/Onest-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Onest";
+  src: url("../fonts/Onest-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Onest";
+  src: url("../fonts/Onest-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Onest";
+  src: url("../fonts/Onest-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ROOT */
+:root {
+  /* colors */
+  --white: #ffffff;
+  --black: #000000;
+  --blue: #192189;
+  --grey: #6a7282;
+  --green: #b3db25;
+  --main-bg: #f2f2f2;
+  --button-bg: rgba(74, 85, 101, 0.1);
+
+  /* font sizes */
+  --fs-sm-sm: clamp(14px, 0.9vw, 14px);
+  --fs-sm: clamp(16px, 1vw, 16px);
+  --fs-sm-md: clamp(16px, 1.5vw, 20px);
+  --fs-md: clamp(16px, 1.5vw, 24px);
+  --fs-lg: clamp(24px, 2vw, 32px);
+  --fs-xl: clamp(36px, 3vw, 48px);
+
+  /* border radius */
+  --br-sm: 12px;
+  --br-sm-md: 16px;
+  --br-md: 20px;
+  --br-sm-lg: 24px;
+  --br-lg: 32px;
+
+  /* font family */
+  --ff-primary: "Onest", sans-serif;
+}
+
+/* RESET */
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+img {
+  width: 100%;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+button {
+  cursor: pointer;
+}
+p {
+  margin: 0;
+}
+::placeholder {
+  color: unset;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--ff-primary);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.container {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 3vw, 50px);
+}
