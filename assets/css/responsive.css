@@ -1,0 +1,11 @@
+@media (max-width: 992px) {
+  .sign-in-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .sign-in-wrapper .left .form-wrapper {
+    padding: 0;
+  }
+  .sign-in-wrapper .right {
+    display: none;
+  }
+}
