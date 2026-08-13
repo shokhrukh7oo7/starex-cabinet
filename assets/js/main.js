@@ -91,21 +91,174 @@ if (togglePassBtn) {
   });
 }
 // =================== SIGN IN TABS =========================
-// =================== INPUT MASK =========================
+// =================== SIGN IN INPUT MASK =========================
 document.addEventListener("DOMContentLoaded", () => {
   const maskOptions = {
     mask: "+998 (00) 000-00-00",
     lazy: false,
   };
 
-  const smsPhoneInput = document.getElementById("sms-phone");
-  const passPhoneInput = document.getElementById("pass-phone");
+  // Вспомогательная функция проверки полноты номера (+998 + 9 цифр = всего 9 цифр в unmaskedValue)
+  const isPhoneComplete = (maskInstance) => {
+    if (!maskInstance) return false;
+    return maskInstance.isComplete || maskInstance.unmaskedValue.length === 9;
+  };
 
-  if (smsPhoneInput) {
+  // 1. Вкладка "По SMS"
+  const smsPhoneInput = document.getElementById("sms-phone");
+  const smsSubmitBtn = document.getElementById("sms-submit-btn");
+
+  if (smsPhoneInput && smsSubmitBtn) {
     const smsMask = IMask(smsPhoneInput, maskOptions);
+
+    const checkSmsForm = () => {
+      const isComplete = isPhoneComplete(smsMask);
+      smsSubmitBtn.disabled = !isComplete;
+    };
+
+    // Подписываемся и на IMask, и на обычные события браузера
+    smsMask.on("accept", checkSmsForm);
+    smsPhoneInput.addEventListener("input", checkSmsForm);
+    smsPhoneInput.addEventListener("keyup", checkSmsForm);
+
+    // Первоначальная проверка
+    checkSmsForm();
   }
 
-  if (passPhoneInput) {
+  // 2. Вкладка "По паролю"
+  const passPhoneInput = document.getElementById("pass-phone");
+  const passPasswordInput = document.getElementById("pass-password");
+  const loginSubmitBtn = document.getElementById("login-submit-btn");
+
+  if (passPhoneInput && passPasswordInput && loginSubmitBtn) {
     const passMask = IMask(passPhoneInput, maskOptions);
+
+    const checkLoginForm = () => {
+      const isPhoneValid = isPhoneComplete(passMask);
+      const isPasswordFilled = passPasswordInput.value.trim().length > 0;
+
+      loginSubmitBtn.disabled = !(isPhoneValid && isPasswordFilled);
+    };
+
+    // Подписываемся на маску и ввод в оба поля
+    passMask.on("accept", checkLoginForm);
+    passPhoneInput.addEventListener("input", checkLoginForm);
+    passPhoneInput.addEventListener("keyup", checkLoginForm);
+
+    passPasswordInput.addEventListener("input", checkLoginForm);
+    passPasswordInput.addEventListener("keyup", checkLoginForm);
+
+    // Первоначальная проверка
+    checkLoginForm();
   }
 });
+// =================== SIGN IN OTP =========================
+document.addEventListener("DOMContentLoaded", () => {
+  const phoneForm = document.getElementById("sms-phone-form");
+  const otpForm = document.getElementById("otp-form");
+  const backBtn = document.getElementById("back-to-phone-btn");
+  const otpInputs = document.querySelectorAll(".otp-input");
+  const resendWrapper = document.getElementById("resend-wrapper");
+  const confirmBtn = document.getElementById("confirm-otp-btn");
+
+  let countdownInterval = null;
+
+  // Переход к OTP при отправке номера
+  if (phoneForm) {
+    phoneForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      phoneForm.classList.add("hidden");
+      otpForm.classList.remove("hidden");
+
+      // Фокус на первый инпут OTP
+      if (otpInputs.length > 0) otpInputs[0].focus();
+
+      startTimer(30);
+    });
+  }
+
+  // Назад к вводу телефона
+  if (backBtn) {
+    backBtn.addEventListener("click", () => {
+      otpForm.classList.add("hidden");
+      phoneForm.classList.remove("hidden");
+      clearInterval(countdownInterval);
+
+      // Очищаем введённые цифры
+      otpInputs.forEach((input) => (input.value = ""));
+      if (confirmBtn) confirmBtn.disabled = true;
+    });
+  }
+
+  // Логика ввода OTP (автопереход между ячейками)
+  otpInputs.forEach((input, index) => {
+    input.addEventListener("input", (e) => {
+      e.target.value = e.target.value.replace(/[^0-9]/g, "");
+
+      if (e.target.value && index < otpInputs.length - 1) {
+        otpInputs[index + 1].focus();
+      }
+
+      checkOtpCompletion();
+    });
+
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Backspace" && !input.value && index > 0) {
+        otpInputs[index - 1].focus();
+      }
+    });
+  });
+
+  function checkOtpCompletion() {
+    const isAllFilled = Array.from(otpInputs).every(
+      (inp) => inp.value.length === 1,
+    );
+    if (confirmBtn) {
+      confirmBtn.disabled = !isAllFilled;
+    }
+  }
+
+  // Функция запуска/сброса таймера
+  function startTimer(seconds) {
+    let timeLeft = seconds;
+
+    // Вставляем начальную верстку таймера
+    resendWrapper.innerHTML = `
+      <p class="resend-text">
+        Повторная отправка OTP через <span id="timer">${timeLeft}</span> секунд
+      </p>
+    `;
+
+    const timerElement = document.getElementById("timer");
+    clearInterval(countdownInterval);
+
+    countdownInterval = setInterval(() => {
+      timeLeft--;
+      if (timerElement) timerElement.textContent = timeLeft;
+
+      if (timeLeft <= 0) {
+        clearInterval(countdownInterval);
+        showResendButton(); // Заменяем текст на кнопку "Переслать OTP"
+      }
+    }, 1000);
+  }
+
+  // Функция показа кнопки "Переслать OTP"
+  function showResendButton() {
+    resendWrapper.innerHTML = `
+      <button type="button" class="resend-link" id="resend-otp-btn">
+        Переслать OTP
+      </button>
+    `;
+
+    const resendBtn = document.getElementById("resend-otp-btn");
+    resendBtn.addEventListener("click", () => {
+      // 1. Здесь можно добавить AJAX-запрос на бэкенд для повторной отправки SMS
+      console.log("Запрос на повторную отправку OTP отправлен");
+
+      // 2. Перезапускаем таймер заново
+      startTimer(30);
+    });
+  }
+});
+// ===================  =========================

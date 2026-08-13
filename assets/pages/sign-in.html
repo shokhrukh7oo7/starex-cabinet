@@ -67,7 +67,8 @@
 
                   <div class="tabs-content">
                     <div class="tab-pane active" id="tab-sms">
-                      <form class="auth-form">
+                      <!-- Блок через телефон -->
+                      <form class="auth-form" id="sms-phone-form">
                         <div class="input-group">
                           <label for="sms-phone">Телефон</label>
                           <input
@@ -78,7 +79,7 @@
                           />
                         </div>
 
-                        <button type="submit" class="submit-btn default-btn">
+                        <button type="submit" class="submit-btn default-btn" id="sms-submit-btn" disabled>
                           Отправить SMS
                         </button>
 
@@ -86,6 +87,77 @@
                           <span>Нет аккаунта ?</span>
                           <a href="#" class="link">Зарегистрироваться</a>
                         </div>
+                      </form>
+
+                      <!-- Блок otp -->
+                      <form class="auth-form hidden" id="otp-form">
+                        <div class="input-group">
+                          <label>Введите код верификации</label>
+                          <div class="otp-container">
+                            <input
+                              type="text"
+                              class="otp-input"
+                              maxlength="1"
+                              inputmode="numeric"
+                              required
+                              placeholder="0"
+                            />
+                            <input
+                              type="text"
+                              class="otp-input"
+                              maxlength="1"
+                              inputmode="numeric"
+                              required
+                              placeholder="0"
+                            />
+                            <input
+                              type="text"
+                              class="otp-input"
+                              maxlength="1"
+                              inputmode="numeric"
+                              required
+                              placeholder="0"
+                            />
+                            <input
+                              type="text"
+                              class="otp-input"
+                              maxlength="1"
+                              inputmode="numeric"
+                              required
+                              placeholder="0"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="resend-wrapper" id="resend-wrapper">
+                          <p class="resend-text">
+                            Повторная отправка OTP через
+                            <span id="timer">30</span> секунд
+                          </p>
+                        </div>
+
+                        <button
+                          type="submit"
+                          class="submit-btn primary-btn"
+                          disabled
+                          id="confirm-otp-btn"
+                        >
+                          ПОДТВЕРДИТЬ
+                        </button>
+
+                        <div class="form-footer">
+                          <span>Нет аккаунта ?</span>
+                          <a href="#" class="link">Зарегистрироваться</a>
+                        </div>
+
+                        <button
+                          type="button"
+                          class="back-btn"
+                          id="back-to-phone-btn"
+                        >
+                          <img src="/assets/images/sign-in/Arrow.svg" alt="image" />
+                          Назад
+                        </button>
                       </form>
                     </div>
 
@@ -127,7 +199,7 @@
                           </div>
                         </div>
 
-                        <button type="submit" class="submit-btn primary-btn">
+                        <button type="submit" class="submit-btn primary-btn" id="login-submit-btn" disabled>
                           Войти
                         </button>
 
