@@ -91,3 +91,21 @@ if (togglePassBtn) {
   });
 }
 // =================== SIGN IN TABS =========================
+// =================== INPUT MASK =========================
+document.addEventListener("DOMContentLoaded", () => {
+  const maskOptions = {
+    mask: "+998 (00) 000-00-00",
+    lazy: false,
+  };
+
+  const smsPhoneInput = document.getElementById("sms-phone");
+  const passPhoneInput = document.getElementById("pass-phone");
+
+  if (smsPhoneInput) {
+    const smsMask = IMask(smsPhoneInput, maskOptions);
+  }
+
+  if (passPhoneInput) {
+    const passMask = IMask(passPhoneInput, maskOptions);
+  }
+});
