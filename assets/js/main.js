@@ -46,7 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 // =================== SIGN IN TABS =========================
-// === Переключение Вкладок (SMS / Пароль) ===
 const tabBtns = document.querySelectorAll(".tab-btn");
 const tabPanes = document.querySelectorAll(".tab-pane");
 
@@ -54,11 +53,9 @@ tabBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     const targetTab = btn.getAttribute("data-tab");
 
-    // Убираем активные классы у всех кнопок и панелей
     tabBtns.forEach((b) => b.classList.remove("active"));
     tabPanes.forEach((pane) => pane.classList.remove("active"));
 
-    // Активируем кликнутую кнопку и нужную панель
     btn.classList.add("active");
     const activePane = document.getElementById(`tab-${targetTab}`);
     if (activePane) {
@@ -67,13 +64,30 @@ tabBtns.forEach((btn) => {
   });
 });
 
-// === Показ / Скрытие пароля (глазик) ===
+// открыть и закрыть пароль (иконка глаза)
 const togglePassBtn = document.querySelector(".toggle-password");
 if (togglePassBtn) {
+  const toggleIcon = togglePassBtn.querySelector("img");
+  const eyeOpenIcon = "/assets/images/sign-in/eye.svg";
+  const eyeClosedIcon = "/assets/images/sign-in/eye-off.svg";
+
   togglePassBtn.addEventListener("click", () => {
     const passInput = document.getElementById("pass-password");
     const isPassword = passInput.getAttribute("type") === "password";
 
     passInput.setAttribute("type", isPassword ? "text" : "password");
+
+    if (isPassword) {
+      passInput.setAttribute("type", "text");
+      toggleIcon.setAttribute("src", eyeOpenIcon);
+      toggleIcon.setAttribute("alt", "Скрыть пароль");
+      togglePassBtn.setAttribute("aria-label", "Скрыть пароль");
+    } else {
+      passInput.setAttribute("type", "password");
+      toggleIcon.setAttribute("src", eyeClosedIcon);
+      toggleIcon.setAttribute("alt", "Показать пароль");
+      togglePassBtn.setAttribute("aria-label", "Показать пароль");
+    }
   });
 }
+// =================== SIGN IN TABS =========================

@@ -460,6 +460,19 @@ body {
   .form-body
   .auth-tabs
   .auth-form
+  .password-wrapper
+  .toggle-password
+  img {
+  width: 20px;
+  height: 20px;
+}
+
+.sign-in-wrapper
+  .left
+  .form-wrapper
+  .form-body
+  .auth-tabs
+  .auth-form
   .forgot-wrapper {
   text-align: right;
 }
