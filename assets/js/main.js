@@ -271,9 +271,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const newPassInput = document.getElementById("new-password");
   const confirmPassInput = document.getElementById("confirm-password");
   const resetSubmitBtn = document.getElementById("reset-submit-btn");
-  const strengthBars = document.querySelectorAll(".password-strength-bars .bar");
+  const strengthBars = document.querySelectorAll(
+    ".password-strength-bars .bar",
+  );
 
-  const originalTitle = formHeaderTitle ? formHeaderTitle.textContent : "Добро пожаловать!";
+  const originalTitle = formHeaderTitle
+    ? formHeaderTitle.textContent
+    : "Добро пожаловать!";
 
   const ICON_DEFAULT = `
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -329,7 +333,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const hasConfirmValue = confirmVal.length > 0;
 
     const newPassStatus = document.getElementById("new-password-status");
-    const confirmPassStatus = document.getElementById("confirm-password-status");
+    const confirmPassStatus = document.getElementById(
+      "confirm-password-status",
+    );
     const confirmWrapper = document.getElementById("confirm-password-wrapper");
     const confirmError = document.getElementById("confirm-password-error");
 

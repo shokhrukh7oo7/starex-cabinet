@@ -1,11 +1,88 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/responsive.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="nav">
+          <div class="logo-wrapper">
+            <img src="/assets/images/Logo.png" alt="image" />
+          </div>
+
+          <div class="nav-menu-wrapper">
+            <ul>
+              <li>
+                <a href="/index.html" class="active">Главная</a>
+              </li>
+              <li>
+                <a href="/assets/pages/send.html">Отправления / Посылки</a>
+              </li>
+              <li>
+                <a href="/assets/pages/filials.html">Филиалы</a>
+              </li>
+              <li>
+                <a href="/assets/pages/chat.html">Чат</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="right-nav-menu-wrapper">
+            <div class="profile-wrapper">
+              <div class="user-icon">
+                <img src="/assets/images/home/user.svg" alt="image" />
+              </div>
+              <a href="/assets/pages/profile.html">Timur</a>
+            </div>
+
+            <div class="language-wrapper">
+              <div class="lang-dropdown" id="langDropdown">
+                <button
+                  class="lang-btn"
+                  aria-haspopup="listbox"
+                  aria-expanded="false"
+                >
+                  <span class="lang-current">Ru</span>
+                  <svg
+                    class="lang-arrow"
+                    width="12"
+                    height="8"
+                    viewBox="0 0 12 8"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1 1.5L6 6.5L11 1.5"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+                <ul class="lang-menu" role="listbox">
+                  <li class="lang-option active" data-value="Ru" role="option">
+                    Ru
+                  </li>
+                  <li class="lang-option" data-value="En" role="option">En</li>
+                  <li class="lang-option" data-value="Uz" role="option">Uz</li>
+                </ul>
+              </div>
+            </div>
+
+            <button class="exit-wrapper">
+              <img src="/assets/images/home/exit.svg" alt="image" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <script src="/assets/js/main.js"></script>
+  </body>
 </html>

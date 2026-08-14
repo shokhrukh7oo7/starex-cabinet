@@ -749,3 +749,101 @@ body {
 }
 /* sign in reset pass end */
 /* ====================================================================== */
+/* HOME PAGE START */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 21.5px 0;
+}
+
+.nav .logo-wrapper img {
+  width: 100%;
+  max-width: 212px;
+  height: 72px;
+}
+
+.nav .nav-menu-wrapper ul {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 2.5vw, 40px);
+}
+
+.nav .nav-menu-wrapper ul li a {
+  font-size: var(--fs-md);
+  font-weight: 400;
+  color: var(--black);
+  letter-spacing: 0;
+  line-height: 100%;
+}
+
+.nav .nav-menu-wrapper ul li a.active {
+  color: var(--blue);
+  border-bottom: 1px solid var(--blue);
+  padding-bottom: 10px;
+}
+
+.nav .right-nav-menu-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav .right-nav-menu-wrapper .profile-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+.nav .right-nav-menu-wrapper .profile-wrapper .user-icon {
+  background-color: var(--blue);
+  border-radius: var(--br-sm);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav .right-nav-menu-wrapper .profile-wrapper .user-icon img {
+  width: 20px;
+  height: 20px;
+}
+
+.nav .right-nav-menu-wrapper .profile-wrapper a {
+  color: var(--white-grey);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 120%;
+}
+
+.nav .right-nav-menu-wrapper .profile-wrapper a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.nav .right-nav-menu-wrapper .exit-wrapper {
+  background-color: var(--button-bg);
+  border-radius: var(--br-lg);
+  height: 48px;
+  width: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+.nav .right-nav-menu-wrapper .exit-wrapper:hover {
+  background-color: #d3d3d3;
+}
+
+.nav .right-nav-menu-wrapper .exit-wrapper img {
+  width: 20px;
+  height: 20px;
+}
+/* HOME PAGE END */
+/* ====================================================================== */
