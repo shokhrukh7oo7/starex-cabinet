@@ -65,31 +65,36 @@ tabBtns.forEach((btn) => {
 });
 
 // открыть и закрыть пароль (иконка глаза)
-const togglePassBtn = document.querySelector(".toggle-password");
-if (togglePassBtn) {
-  const toggleIcon = togglePassBtn.querySelector("img");
-  const eyeOpenIcon = "/assets/images/sign-in/eye.svg";
-  const eyeClosedIcon = "/assets/images/sign-in/eye-off.svg";
+// Переключатель видимости пароля (для всех полей)
+const togglePassBtns = document.querySelectorAll(".toggle-password");
 
-  togglePassBtn.addEventListener("click", () => {
-    const passInput = document.getElementById("pass-password");
+togglePassBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    // Находим инпут, который находится в том же .password-wrapper
+    const wrapper = btn.closest(".password-wrapper");
+    if (!wrapper) return;
+
+    const passInput = wrapper.querySelector("input");
+    const toggleIcon = btn.querySelector("img");
+    if (!passInput || !toggleIcon) return;
+
     const isPassword = passInput.getAttribute("type") === "password";
-
-    passInput.setAttribute("type", isPassword ? "text" : "password");
+    const eyeOpenIcon = "/assets/images/sign-in/eye.svg";
+    const eyeClosedIcon = "/assets/images/sign-in/eye-off.svg";
 
     if (isPassword) {
       passInput.setAttribute("type", "text");
       toggleIcon.setAttribute("src", eyeOpenIcon);
       toggleIcon.setAttribute("alt", "Скрыть пароль");
-      togglePassBtn.setAttribute("aria-label", "Скрыть пароль");
+      btn.setAttribute("aria-label", "Скрыть пароль");
     } else {
       passInput.setAttribute("type", "password");
       toggleIcon.setAttribute("src", eyeClosedIcon);
       toggleIcon.setAttribute("alt", "Показать пароль");
-      togglePassBtn.setAttribute("aria-label", "Показать пароль");
+      btn.setAttribute("aria-label", "Показать пароль");
     }
   });
-}
+});
 // =================== SIGN IN TABS =========================
 // =================== SIGN IN INPUT MASK =========================
 document.addEventListener("DOMContentLoaded", () => {
@@ -163,34 +168,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let countdownInterval = null;
 
-  // Переход к OTP при отправке номера
   if (phoneForm) {
     phoneForm.addEventListener("submit", (e) => {
       e.preventDefault();
       phoneForm.classList.add("hidden");
       otpForm.classList.remove("hidden");
 
-      // Фокус на первый инпут OTP
       if (otpInputs.length > 0) otpInputs[0].focus();
 
       startTimer(30);
     });
   }
 
-  // Назад к вводу телефона
   if (backBtn) {
     backBtn.addEventListener("click", () => {
       otpForm.classList.add("hidden");
       phoneForm.classList.remove("hidden");
       clearInterval(countdownInterval);
 
-      // Очищаем введённые цифры
       otpInputs.forEach((input) => (input.value = ""));
       if (confirmBtn) confirmBtn.disabled = true;
     });
   }
 
-  // Логика ввода OTP (автопереход между ячейками)
   otpInputs.forEach((input, index) => {
     input.addEventListener("input", (e) => {
       e.target.value = e.target.value.replace(/[^0-9]/g, "");
@@ -218,11 +218,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Функция запуска/сброса таймера
   function startTimer(seconds) {
     let timeLeft = seconds;
 
-    // Вставляем начальную верстку таймера
     resendWrapper.innerHTML = `
       <p class="resend-text">
         Повторная отправка OTP через <span id="timer">${timeLeft}</span> секунд
@@ -238,12 +236,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (timeLeft <= 0) {
         clearInterval(countdownInterval);
-        showResendButton(); // Заменяем текст на кнопку "Переслать OTP"
+        showResendButton();
       }
     }, 1000);
   }
 
-  // Функция показа кнопки "Переслать OTP"
   function showResendButton() {
     resendWrapper.innerHTML = `
       <button type="button" class="resend-link" id="resend-otp-btn">
@@ -256,9 +253,131 @@ document.addEventListener("DOMContentLoaded", () => {
       // 1. Здесь можно добавить AJAX-запрос на бэкенд для повторной отправки SMS
       console.log("Запрос на повторную отправку OTP отправлен");
 
-      // 2. Перезапускаем таймер заново
       startTimer(30);
     });
   }
 });
-// ===================  =========================
+// =================== RESET PASSWORD & VALIDATION =========================
+document.addEventListener("DOMContentLoaded", () => {
+  const forgotLink = document.querySelector(".forgot-link");
+  const passwordForm = document.getElementById("password-form");
+  const resetForm = document.getElementById("reset-password-form");
+  const backFromResetBtn = document.getElementById("back-from-reset-btn");
+
+  const authTabsHeader = document.querySelector(".tabs-header");
+  const formHeaderTitle = document.querySelector(".form-header h1");
+  const formHeaderSub = document.querySelector(".form-header p");
+
+  const newPassInput = document.getElementById("new-password");
+  const confirmPassInput = document.getElementById("confirm-password");
+  const resetSubmitBtn = document.getElementById("reset-submit-btn");
+  const strengthBars = document.querySelectorAll(".password-strength-bars .bar");
+
+  const originalTitle = formHeaderTitle ? formHeaderTitle.textContent : "Добро пожаловать!";
+
+  const ICON_DEFAULT = `
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="10" cy="10" r="10" fill="#EDEDED"/>
+      <path d="M6 10L8.5 12.5L14 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`;
+
+  const ICON_CHECK = `
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="10" cy="10" r="10" fill="#B3DB25"/>
+      <path d="M6 10L8.5 12.5L14 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`;
+
+  const ICON_ERROR = `
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="10" cy="10" r="10" fill="#CE2525"/>
+      <path d="M10 6V11M10 14H10.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`;
+
+  if (forgotLink && resetForm) {
+    forgotLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (passwordForm) passwordForm.classList.add("hidden");
+      if (authTabsHeader) authTabsHeader.style.display = "none";
+      resetForm.classList.remove("hidden");
+      if (formHeaderTitle) formHeaderTitle.textContent = "Сбросить пароль";
+      if (formHeaderSub) formHeaderSub.style.display = "none";
+    });
+  }
+
+  if (backFromResetBtn) {
+    backFromResetBtn.addEventListener("click", () => {
+      resetForm.classList.add("hidden");
+      if (passwordForm) passwordForm.classList.remove("hidden");
+      if (authTabsHeader) authTabsHeader.style.display = "flex";
+      if (formHeaderTitle) formHeaderTitle.textContent = originalTitle;
+      if (formHeaderSub) formHeaderSub.style.display = "block";
+
+      if (newPassInput) newPassInput.value = "";
+      if (confirmPassInput) confirmPassInput.value = "";
+      updateValidation();
+    });
+  }
+
+  function updateValidation() {
+    if (!newPassInput || !confirmPassInput || !resetSubmitBtn) return;
+
+    const passVal = newPassInput.value;
+    const confirmVal = confirmPassInput.value;
+
+    const isMinLength = passVal.length >= 8;
+    const isMatch = passVal === confirmVal && confirmVal.length > 0;
+    const hasConfirmValue = confirmVal.length > 0;
+
+    const newPassStatus = document.getElementById("new-password-status");
+    const confirmPassStatus = document.getElementById("confirm-password-status");
+    const confirmWrapper = document.getElementById("confirm-password-wrapper");
+    const confirmError = document.getElementById("confirm-password-error");
+
+    if (newPassStatus) {
+      newPassStatus.innerHTML = isMinLength ? ICON_CHECK : ICON_DEFAULT;
+    }
+
+    const len = passVal.length;
+    strengthBars.forEach((bar, index) => {
+      if (len === 0) {
+        bar.classList.remove("active");
+      } else if (index === 0 && len > 0) {
+        bar.classList.add("active");
+      } else if (index === 1 && len >= 5) {
+        bar.classList.add("active");
+      } else if (index === 2 && len >= 8) {
+        bar.classList.add("active");
+      } else {
+        bar.classList.remove("active");
+      }
+    });
+
+    if (confirmWrapper && confirmError && confirmPassStatus) {
+      if (hasConfirmValue) {
+        if (isMatch) {
+          confirmWrapper.classList.remove("invalid");
+          confirmError.classList.add("hidden");
+          confirmPassStatus.innerHTML = ICON_CHECK;
+        } else {
+          confirmWrapper.classList.add("invalid");
+          confirmError.classList.remove("hidden");
+          confirmPassStatus.innerHTML = ICON_ERROR;
+        }
+      } else {
+        confirmWrapper.classList.remove("invalid");
+        confirmError.classList.add("hidden");
+        confirmPassStatus.innerHTML = ICON_DEFAULT;
+      }
+    }
+
+    resetSubmitBtn.disabled = !(isMinLength && isMatch);
+  }
+
+  [newPassInput, confirmPassInput].forEach((input) => {
+    if (input) {
+      input.addEventListener("input", updateValidation);
+    }
+  });
+
+  updateValidation();
+});

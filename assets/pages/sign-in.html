@@ -79,7 +79,12 @@
                           />
                         </div>
 
-                        <button type="submit" class="submit-btn default-btn" id="sms-submit-btn" disabled>
+                        <button
+                          type="submit"
+                          class="submit-btn default-btn"
+                          id="sms-submit-btn"
+                          disabled
+                        >
                           Отправить SMS
                         </button>
 
@@ -155,14 +160,17 @@
                           class="back-btn"
                           id="back-to-phone-btn"
                         >
-                          <img src="/assets/images/sign-in/Arrow.svg" alt="image" />
+                          <img
+                            src="/assets/images/sign-in/Arrow.svg"
+                            alt="image"
+                          />
                           Назад
                         </button>
                       </form>
                     </div>
 
                     <div class="tab-pane" id="tab-password">
-                      <form class="auth-form">
+                      <form class="auth-form" id="password-form">
                         <div class="input-group">
                           <label for="pass-phone">Телефон</label>
                           <input
@@ -199,7 +207,12 @@
                           </div>
                         </div>
 
-                        <button type="submit" class="submit-btn primary-btn" id="login-submit-btn" disabled>
+                        <button
+                          type="submit"
+                          class="submit-btn primary-btn"
+                          id="login-submit-btn"
+                          disabled
+                        >
                           Войти
                         </button>
 
@@ -207,6 +220,104 @@
                           <span>Нет аккаунта ?</span>
                           <a href="#" class="link">Зарегистрироваться</a>
                         </div>
+                      </form>
+
+                      <form class="auth-form hidden" id="reset-password-form">
+                        <div class="input-group">
+                          <label for="new-password">Пароль</label>
+                          <div class="input-field-container">
+                            <div class="password-wrapper">
+                              <input
+                                type="password"
+                                id="new-password"
+                                placeholder="••••••"
+                                required
+                              />
+                              <button
+                                type="button"
+                                class="toggle-password"
+                                aria-label="Показать пароль"
+                              >
+                                <img
+                                  src="/assets/images/sign-in/eye-off.svg"
+                                  class="toggle-icon"
+                                  alt="image"
+                                />
+                              </button>
+                            </div>
+                            <div
+                              class="status-icon"
+                              id="new-password-status"
+                            ></div>
+                          </div>
+                        </div>
+
+                        <div class="input-group">
+                          <label for="confirm-password"
+                            >Подтвердить пароль</label
+                          >
+                          <div class="input-field-container">
+                            <div
+                              class="password-wrapper"
+                              id="confirm-password-wrapper"
+                            >
+                              <input
+                                type="password"
+                                id="confirm-password"
+                                placeholder="••••••"
+                                required
+                              />
+                              <button
+                                type="button"
+                                class="toggle-password"
+                                aria-label="Показать пароль"
+                              >
+                                <img
+                                  src="/assets/images/sign-in/eye-off.svg"
+                                  class="toggle-icon"
+                                  alt="image"
+                                />
+                              </button>
+                            </div>
+                            <div
+                              class="status-icon"
+                              id="confirm-password-status"
+                            ></div>
+                          </div>
+                          <span
+                            class="error-message hidden"
+                            id="confirm-password-error"
+                            >Пароли не совпадают</span
+                          >
+                        </div>
+
+                        <div class="password-strength-bars">
+                          <span class="bar"></span>
+                          <span class="bar"></span>
+                          <span class="bar"></span>
+                        </div>
+                        <p class="strength-hint">Минимум 8 символов</p>
+
+                        <button
+                          type="submit"
+                          class="submit-btn primary-btn"
+                          id="reset-submit-btn"
+                          disabled
+                        >
+                          СБРОСИТЬ ПАРОЛЬ
+                        </button>
+
+                        <button
+                          type="button"
+                          class="back-btn"
+                          id="back-from-reset-btn"
+                        >
+                          <img
+                            src="/assets/images/sign-in/Arrow.svg"
+                            alt="image"
+                          />
+                          Назад
+                        </button>
                       </form>
                     </div>
                   </div>
