@@ -393,14 +393,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileMenu = document.getElementById('mobileMenu');
 
   if (burgerBtn && mobileMenu) {
-    // Открытие / закрытие меню
     burgerBtn.addEventListener('click', () => {
       burgerBtn.classList.toggle('active');
       mobileMenu.classList.toggle('active');
       document.body.classList.toggle('no-scroll');
     });
 
-    // Закрытие при клике вне меню
     document.addEventListener('click', (e) => {
       if (!mobileMenu.contains(e.target) && !burgerBtn.contains(e.target)) {
         burgerBtn.classList.remove('active');
