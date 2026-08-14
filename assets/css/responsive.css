@@ -8,7 +8,7 @@
   .sign-in-wrapper .right {
     display: none;
   }
-  .burger-btn {
+  /* .burger-btn {
     display: flex;
   }
 
@@ -78,6 +78,101 @@
 
   .nav .right-nav-menu-wrapper .profile-wrapper a {
     color: var(--black, #000);
+  } */
+
+  .nav {
+    position: relative;
+  }
+
+  .mobile-menu-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0;
+    width: auto;
+  }
+
+  .nav .right-nav-menu-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nav .right-nav-menu-wrapper .profile-wrapper a {
+    display: none;
+  }
+
+  .nav-menu-wrapper {
+    position: fixed;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 32px);
+    max-width: 400px;
+    border-radius: 200px;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 13.5px 24.5px;
+    z-index: 999;
+  }
+
+  .nav .nav-menu-wrapper ul {
+    justify-content: space-around;
+    gap: 0;
+  }
+
+  .nav .nav-menu-wrapper ul li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: var(--white-grey);
+    text-decoration: none;
+    font-size: var(--fs-sm-sm);
+    border: none !important;
+    padding-bottom: 0 !important;
+  }
+
+  .nav-icon {
+    display: block;
+    stroke: var(--white-grey);
+    transition: all 0.2s ease;
+  }
+
+  .nav .nav-menu-wrapper ul li a.active {
+    color: var(--blue);
+    font-weight: 500;
+  }
+
+  .nav .nav-menu-wrapper ul li a.active .nav-icon {
+    stroke: var(--blue);
+  }
+
+  body {
+    padding-bottom: 90px;
   }
   /* navbar end */
+}
+
+@media (max-width: 576px) {
+  .nav .logo-wrapper {
+    display: none;
+  }
+  .nav .right-nav-menu-wrapper {
+    width: 100%;
+    justify-content: space-between;
+    grid-template-columns: repeat(1, 1fr);
+    display: grid;
+  }
+  .nav .right-nav-menu-wrapper .language-wrapper {
+    grid-column-start: 5;
+  }
+  .nav .right-nav-menu-wrapper .exit-wrapper {
+    grid-column-start: 6;
+  }
+  .nav .nav-menu-wrapper ul li a {
+    font-size: calc(var(--fs-sm-sm) - 2px);
+  }
+  .nav .right-nav-menu-wrapper .profile-wrapper a {
+    display: block;
+  }
 }
