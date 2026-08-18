@@ -81,6 +81,16 @@
     padding-bottom: 80px;
   }
   /* navbar end */
+
+  .calc-wrapper .calc-route-section {
+    flex-direction: column;
+  }
+  .calc-wrapper .calc-dimensions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .calc-wrapper .calc-footer {
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 768px) {
@@ -204,5 +214,8 @@
   }
   .nav .right-nav-menu-wrapper .profile-wrapper a {
     display: block;
+  }
+  .calc-wrapper .calc-dimensions {
+    grid-template-columns: 1fr;
   }
 }

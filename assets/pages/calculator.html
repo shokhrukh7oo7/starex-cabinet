@@ -165,7 +165,153 @@
     <main>
       <section>
         <div class="container">
-          <h1>test</h1>
+          <div class="calc-container">
+            <div class="back-wrapper">
+              <a href="/index.html">← Вернуться назад</a>
+            </div>
+
+            <div class="calc-header-wrapper">
+              <span>клиентам</span>
+              <h1>Расчитать стоимость услуги онлайн</h1>
+            </div>
+
+            <div class="calc-wrapper">
+              <div class="calc-route-section">
+                <div class="calc-card" id="from-card">
+                  <h3 class="calc-card-title">Откуда</h3>
+                  <div class="input-field-group">
+                    <label class="field-label">Город/Район</label>
+                    <div class="custom-select-wrapper">
+                      <select class="city-select" id="from-city">
+                        <option value="" disabled selected>
+                          Выбрать из списка
+                        </option>
+                        <option value="Ташкент">Ташкент</option>
+                        <option value="Фергана">Фергана</option>
+                        <option value="Самарканд">Самарканд</option>
+                        <option value="Андижон">Андижон</option>
+                        <option value="Бухара">Бухара</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="quick-tags">
+                    <button
+                      type="button"
+                      class="tag-btn active"
+                      data-city="Ташкент"
+                    >
+                      Ташкент
+                    </button>
+                    <button type="button" class="tag-btn" data-city="Фергана">
+                      Фергана
+                    </button>
+                    <button type="button" class="tag-btn" data-city="Самарканд">
+                      Самарканд
+                    </button>
+                    <button type="button" class="tag-btn" data-city="Андижон">
+                      Андижон
+                    </button>
+                    <button type="button" class="tag-btn" data-city="Бухара">
+                      Бухара
+                    </button>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  class="swap-btn"
+                  id="swap-btn"
+                  aria-label="Поменять местами"
+                >
+                  <img src="/assets/images/calc/swap.svg" alt="icon" />
+                </button>
+
+                <div class="calc-card" id="to-card">
+                  <h3 class="calc-card-title">Куда</h3>
+                  <div class="input-field-group">
+                    <label class="field-label">Город/Район</label>
+                    <div class="custom-select-wrapper">
+                      <select class="city-select" id="to-city">
+                        <option value="" disabled selected>
+                          Выбрать из списка
+                        </option>
+                        <option value="Ташкент">Ташкент</option>
+                        <option value="Фергана">Фергана</option>
+                        <option value="Самарканд">Самарканд</option>
+                        <option value="Андижон">Андижон</option>
+                        <option value="Бухара">Бухара</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="quick-tags">
+                    <button
+                      type="button"
+                      class="tag-btn active"
+                      data-city="Ташкент"
+                    >
+                      Ташкент
+                    </button>
+                    <button type="button" class="tag-btn" data-city="Фергана">
+                      Фергана
+                    </button>
+                    <button type="button" class="tag-btn" data-city="Самарканд">
+                      Самарканд
+                    </button>
+                    <button type="button" class="tag-btn" data-city="Андижон">
+                      Андижон
+                    </button>
+                    <button type="button" class="tag-btn" data-city="Бухара">
+                      Бухара
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="calc-dimensions">
+                <div class="input-group">
+                  <label for="weight">Вес (кг)*</label>
+                  <input
+                    type="number"
+                    id="weight"
+                    placeholder="Текст"
+                    min="0"
+                    step="0.1"
+                  />
+                </div>
+                <div class="input-group">
+                  <label for="width">Ширина (см)*</label>
+                  <input type="number" id="width" placeholder="Текст" min="0" />
+                </div>
+                <div class="input-group">
+                  <label for="length">Длина (см)</label>
+                  <input
+                    type="number"
+                    id="length"
+                    placeholder="Текст"
+                    min="0"
+                  />
+                </div>
+                <div class="input-group">
+                  <label for="height">Высота (см)</label>
+                  <input
+                    type="number"
+                    id="height"
+                    placeholder="Текст"
+                    min="0"
+                  />
+                </div>
+              </div>
+
+              <div class="calc-footer">
+                <button type="button" class="calc-submit-btn" id="calc-submit">
+                  РАССЧИТАТЬ СТОИМОСТЬ
+                </button>
+                <span class="calc-note"
+                  >* Для расчета необходимо заполнить все строки</span
+                >
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>

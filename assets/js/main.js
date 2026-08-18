@@ -463,6 +463,67 @@ function updateParcelStatus(apiData) {
 // Пример вызова при получении ответа от API:
 /*
 fetch('/api/v1/parcels/TRK-998-2024-001')
-  .then(response => response.json())
-  .then(data => updateParcelStatus(data));
+.then(response => response.json())
+.then(data => updateParcelStatus(data));
 */
+// ====================================== CALCULATOR PAGE ====================================
+document.addEventListener("DOMContentLoaded", () => {
+  const routeSection = document.querySelector(".calc-route-section");
+  const swapBtn = document.getElementById("swap-btn");
+
+  const fromSelect = document.getElementById("from-city");
+  const toSelect = document.getElementById("to-city");
+
+  const fromCard = document.getElementById("from-card");
+  const toCard = document.getElementById("to-card");
+
+  function updateActiveTag(cardElement, selectedValue) {
+    if (!cardElement) return;
+    const tags = cardElement.querySelectorAll(".tag-btn");
+    tags.forEach((tag) => {
+      if (tag.dataset.city === selectedValue) {
+        tag.classList.add("active");
+      } else {
+        tag.classList.remove("active");
+      }
+    });
+  }
+
+  function setupTagClicks(cardElement, selectElement) {
+    if (!cardElement || !selectElement) return;
+    const tags = cardElement.querySelectorAll(".tag-btn");
+    tags.forEach((tag) => {
+      tag.addEventListener("click", () => {
+        const cityName = tag.dataset.city;
+        selectElement.value = cityName;
+        updateActiveTag(cardElement, cityName);
+      });
+    });
+  }
+
+  setupTagClicks(fromCard, fromSelect);
+  setupTagClicks(toCard, toSelect);
+
+  if (fromSelect) {
+    fromSelect.addEventListener("change", (e) =>
+      updateActiveTag(fromCard, e.target.value),
+    );
+  }
+  if (toSelect) {
+    toSelect.addEventListener("change", (e) =>
+      updateActiveTag(toCard, e.target.value),
+    );
+  }
+  if (swapBtn) {
+    swapBtn.addEventListener("click", () => {
+      routeSection.classList.toggle("is-swapped");
+
+      const tempValue = fromSelect.value;
+      fromSelect.value = toSelect.value;
+      toSelect.value = tempValue;
+
+      updateActiveTag(fromCard, fromSelect.value);
+      updateActiveTag(toCard, toSelect.value);
+    });
+  }
+});
