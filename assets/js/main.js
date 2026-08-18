@@ -388,23 +388,40 @@ document.addEventListener("DOMContentLoaded", () => {
   updateValidation();
 });
 // ====================================== NAVBAR BURGER MENU ====================================
-document.addEventListener('DOMContentLoaded', () => {
-  const burgerBtn = document.getElementById('burgerBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
+document.addEventListener("DOMContentLoaded", () => {
+  const burgerBtn = document.getElementById("burgerBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
 
   if (burgerBtn && mobileMenu) {
-    burgerBtn.addEventListener('click', () => {
-      burgerBtn.classList.toggle('active');
-      mobileMenu.classList.toggle('active');
-      document.body.classList.toggle('no-scroll');
+    burgerBtn.addEventListener("click", () => {
+      burgerBtn.classList.toggle("active");
+      mobileMenu.classList.toggle("active");
+      document.body.classList.toggle("no-scroll");
     });
 
-    document.addEventListener('click', (e) => {
+    document.addEventListener("click", (e) => {
       if (!mobileMenu.contains(e.target) && !burgerBtn.contains(e.target)) {
-        burgerBtn.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        document.body.classList.remove('no-scroll');
+        burgerBtn.classList.remove("active");
+        mobileMenu.classList.remove("active");
+        document.body.classList.remove("no-scroll");
       }
     });
   }
+});
+// ====================================== CALCULATOR TABS ====================================
+document.addEventListener("DOMContentLoaded", () => {
+  const tabs = document.querySelectorAll(".tab-wrapper .tab");
+  const panes = document.querySelectorAll(".tab-wrapper .tab-pane");
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const targetId = tab.dataset.tab;
+
+      tabs.forEach((t) => t.classList.remove("active"));
+      panes.forEach((p) => p.classList.remove("active"));
+
+      tab.classList.add("active");
+      document.getElementById(targetId)?.classList.add("active");
+    });
+  });
 });

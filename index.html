@@ -146,9 +146,9 @@
                 </div>
               </div>
 
-              <button class="exit-wrapper">
+              <a href="/assets/pages/sign-in.html" class="exit-wrapper">
                 <img src="/assets/images/home/exit.svg" alt="image" />
-              </button>
+              </a>
             </div>
           </div>
 
@@ -161,6 +161,45 @@
         </div>
       </div>
     </header>
+
+    <section class="home-tab">
+      <div class="container">
+        <div class="home-tab-header">
+          <p>личный кабинет</p>
+          <h1>Добро пожаловать</h1>
+        </div>
+
+        <div class="home-tab-container">
+          <div class="tab-wrapper">
+            <div class="tab-group">
+              <button class="tab active" data-tab="package">
+                <img src="/assets/images/home/search.svg" alt="image" />
+                Отследить посылку
+              </button>
+              <button class="tab" data-tab="calc">
+                <img src="/assets/images/home/calc.svg" alt="image" />
+                Калькулятор
+              </button>
+            </div>
+
+            <div class="tab-content">
+              <div class="tab-pane active" id="package">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Введите трекинг номер"
+                />
+                <button>Наблюдать</button>
+              </div>
+
+              <div class="tab-pane" id="calc">
+                <h1>test</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <script src="/assets/js/main.js"></script>
   </body>
