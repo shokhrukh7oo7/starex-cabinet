@@ -8,7 +8,7 @@
   .sign-in-wrapper .right {
     display: none;
   }
-  
+
   .nav {
     position: relative;
   }
@@ -154,6 +154,23 @@
   .home-tab .parcels-section .filters-bar .filter-group .filter-label {
     width: 100%;
     text-align: center;
+  }
+
+  .home-tab .parcels-section .filters-bar .filter-group {
+    justify-content: center;
+    margin: 0 auto;
+  }
+  .home-tab .parcel-card .parcel-header {
+    align-items: start;
+    flex-direction: column-reverse;
+  }
+  .home-tab .parcel-card .parcel-route .location-pill {
+    flex-direction: column;
+    border: none;
+    padding: 0;
+  }
+  .home-tab .parcel-card .parcel-route .location-pill img {
+    display: none;
   }
 }
 

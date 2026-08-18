@@ -910,7 +910,7 @@ body.no-scroll {
 
 .home-tab {
   background-color: #f2f2f2;
-  padding: 50px 0;
+  padding: clamp(20px, 4vw, 50px) 0;
   min-height: 100vh;
 }
 
@@ -1056,7 +1056,6 @@ body.no-scroll {
 .home-tab .parcels-section .filters-bar .filter-group {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 8px;
   flex-wrap: wrap;
 }
@@ -1130,7 +1129,7 @@ body.no-scroll {
 .home-tab .parcel-card {
   background: var(--main-bg);
   border-radius: var(--br-lg);
-  padding: clamp(8px, 2vw, 32px);
+  padding: clamp(16px, 2vw, 32px);
   display: flex;
   flex-direction: column;
   gap: 24px;
