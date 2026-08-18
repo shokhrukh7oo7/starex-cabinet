@@ -410,18 +410,59 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 // ====================================== CALCULATOR TABS ====================================
 document.addEventListener("DOMContentLoaded", () => {
-  const tabs = document.querySelectorAll(".tab-wrapper .tab");
-  const panes = document.querySelectorAll(".tab-wrapper .tab-pane");
+  // const tabs = document.querySelectorAll(".tab-wrapper .tab");
+  // const panes = document.querySelectorAll(".tab-wrapper .tab-pane");
 
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      const targetId = tab.dataset.tab;
+  // tabs.forEach((tab) => {
+  //   tab.addEventListener("click", () => {
+  //     const targetId = tab.dataset.tab;
 
-      tabs.forEach((t) => t.classList.remove("active"));
-      panes.forEach((p) => p.classList.remove("active"));
+  //     if (targetId === "calc") {
+  //       window.location.href = "/assets/pages/calculator.html";
+  //       return;
+  //     }
 
-      tab.classList.add("active");
-      document.getElementById(targetId)?.classList.add("active");
+  //     tabs.forEach((t) => t.classList.remove("active"));
+  //     panes.forEach((p) => p.classList.remove("active"));
+
+  //     tab.classList.add("active");
+  //     document.getElementById(targetId)?.classList.add("active");
+  //   });
+  // });
+
+  const filterGroups = document.querySelectorAll(".filter-group");
+  filterGroups.forEach((group) => {
+    const buttons = group.querySelectorAll(".filter-btn");
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        buttons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+      });
     });
   });
 });
+// ====================================== PROGRESS LINE IN HOME ====================================
+// Функция обновления прогресса на основе данных из API
+function updateParcelStatus(apiData) {
+  const progressLine = document.getElementById("progress-line");
+  const progressPoint = document.getElementById("progress-point");
+
+  const percent = Math.min(Math.max(apiData.progress_percent, 0), 100);
+
+  // Динамически меняем ширину линии и положение точки
+  progressLine.style.width = `${percent}%`;
+  progressPoint.style.left = `${percent}%`;
+
+  // Обновляем текстовые данные
+  document.getElementById("origin-city").textContent = apiData.origin.city;
+  document.getElementById("origin-date").textContent = apiData.origin.date;
+  document.getElementById("dest-city").textContent = apiData.destination.city;
+  document.getElementById("dest-date").textContent = apiData.destination.date;
+}
+
+// Пример вызова при получении ответа от API:
+/*
+fetch('/api/v1/parcels/TRK-998-2024-001')
+  .then(response => response.json())
+  .then(data => updateParcelStatus(data));
+*/

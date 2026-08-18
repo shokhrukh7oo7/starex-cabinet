@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/responsive.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="nav">
+          <div class="logo-wrapper">
+            <img src="/assets/images/Logo.png" alt="image" />
+          </div>
+
+          <!-- Общая обертка для мобильного меню -->
+          <div class="mobile-menu-wrapper" id="mobileMenu">
+            <div class="nav-menu-wrapper">
+              <ul>
+                <li>
+                  <a href="/index.html" class="active">
+                    <svg
+                      class="nav-icon"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                      />
+                    </svg>
+                    <span>Главная</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/assets/pages/send.html">
+                    <svg
+                      class="nav-icon"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                      />
+                    </svg>
+                    <span>Посылки</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/assets/pages/filials.html">
+                    <svg
+                      class="nav-icon"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                      />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    <span>Офисы</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/assets/pages/chat.html">
+                    <svg
+                      class="nav-icon"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                      />
+                    </svg>
+                    <span>Чат</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="right-nav-menu-wrapper">
+              <div class="profile-wrapper">
+                <div class="user-icon">
+                  <img src="/assets/images/home/user.svg" alt="image" />
+                </div>
+                <a href="/assets/pages/profile.html">Timur</a>
+              </div>
+
+              <div class="language-wrapper">
+                <div class="lang-dropdown" id="langDropdown">
+                  <button
+                    class="lang-btn"
+                    aria-haspopup="listbox"
+                    aria-expanded="false"
+                  >
+                    <span class="lang-current">Ru</span>
+                    <svg
+                      class="lang-arrow"
+                      width="12"
+                      height="8"
+                      viewBox="0 0 12 8"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1 1.5L6 6.5L11 1.5"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </button>
+                  <ul class="lang-menu" role="listbox">
+                    <li
+                      class="lang-option active"
+                      data-value="Ru"
+                      role="option"
+                    >
+                      Ru
+                    </li>
+                    <li class="lang-option" data-value="En" role="option">
+                      En
+                    </li>
+                    <li class="lang-option" data-value="Uz" role="option">
+                      Uz
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <a href="/assets/pages/sign-in.html" class="exit-wrapper">
+                <img src="/assets/images/home/exit.svg" alt="image" />
+              </a>
+            </div>
+          </div>
+
+          <!-- Кнопка бургера -->
+          <button class="burger-btn" id="burgerBtn" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <div class="container">
+          <h1>test</h1>
+        </div>
+      </section>
+    </main>
+
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>
