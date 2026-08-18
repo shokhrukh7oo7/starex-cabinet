@@ -172,6 +172,15 @@
   .home-tab .parcel-card .parcel-route .location-pill img {
     display: none;
   }
+  .sign-in {
+    min-height: auto;
+  }
+  .sign-in-wrapper {
+    min-height: auto;
+  }
+  .sign-in-wrapper .left {
+    gap: 50px 0;
+  }
 }
 
 @media (max-width: 576px) {
