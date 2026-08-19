@@ -64,13 +64,10 @@ tabBtns.forEach((btn) => {
   });
 });
 
-// открыть и закрыть пароль (иконка глаза)
-// Переключатель видимости пароля (для всех полей)
 const togglePassBtns = document.querySelectorAll(".toggle-password");
 
 togglePassBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
-    // Находим инпут, который находится в том же .password-wrapper
     const wrapper = btn.closest(".password-wrapper");
     if (!wrapper) return;
 
@@ -103,15 +100,18 @@ document.addEventListener("DOMContentLoaded", () => {
     lazy: false,
   };
 
-  // Вспомогательная функция проверки полноты номера (+998 + 9 цифр = всего 9 цифр в unmaskedValue)
   const isPhoneComplete = (maskInstance) => {
     if (!maskInstance) return false;
     return maskInstance.isComplete || maskInstance.unmaskedValue.length === 9;
   };
 
-  // 1. Вкладка "По SMS"
+  const telInputs = document.querySelectorAll('input[type="tel"]');
   const smsPhoneInput = document.getElementById("sms-phone");
   const smsSubmitBtn = document.getElementById("sms-submit-btn");
+
+  telInputs.forEach((input) => {
+    IMask(input, maskOptions);
+  });
 
   if (smsPhoneInput && smsSubmitBtn) {
     const smsMask = IMask(smsPhoneInput, maskOptions);
@@ -121,16 +121,13 @@ document.addEventListener("DOMContentLoaded", () => {
       smsSubmitBtn.disabled = !isComplete;
     };
 
-    // Подписываемся и на IMask, и на обычные события браузера
     smsMask.on("accept", checkSmsForm);
     smsPhoneInput.addEventListener("input", checkSmsForm);
     smsPhoneInput.addEventListener("keyup", checkSmsForm);
 
-    // Первоначальная проверка
     checkSmsForm();
   }
 
-  // 2. Вкладка "По паролю"
   const passPhoneInput = document.getElementById("pass-phone");
   const passPasswordInput = document.getElementById("pass-password");
   const loginSubmitBtn = document.getElementById("login-submit-btn");
@@ -145,7 +142,6 @@ document.addEventListener("DOMContentLoaded", () => {
       loginSubmitBtn.disabled = !(isPhoneValid && isPasswordFilled);
     };
 
-    // Подписываемся на маску и ввод в оба поля
     passMask.on("accept", checkLoginForm);
     passPhoneInput.addEventListener("input", checkLoginForm);
     passPhoneInput.addEventListener("keyup", checkLoginForm);
@@ -153,7 +149,6 @@ document.addEventListener("DOMContentLoaded", () => {
     passPasswordInput.addEventListener("input", checkLoginForm);
     passPasswordInput.addEventListener("keyup", checkLoginForm);
 
-    // Первоначальная проверка
     checkLoginForm();
   }
 });
@@ -566,7 +561,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 // ====================================== PROFILE ADDRESS ====================================
 document.addEventListener("DOMContentLoaded", () => {
-  // Данные адресов (State)
   let addresses = [
     {
       id: 1,

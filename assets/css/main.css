@@ -2370,6 +2370,10 @@ body.no-scroll {
   font-size: var(--fs-sm);
   outline: none;
   transition: border-color 0.2s ease;
+  color: var(--black);
+}
+
+.modal-form .profile-field input::placeholder {
   color: var(--grey);
 }
 
