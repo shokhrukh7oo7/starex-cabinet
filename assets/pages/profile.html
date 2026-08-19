@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Профиль</title>
+
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/responsive.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <div class="nav">
+          <!-- LOGO -->
+          <div class="logo-wrapper">
+            <img src="/assets/images/Logo.png" alt="Starex" />
+          </div>
+
+          <!-- MOBILE MENU -->
+          <div class="mobile-menu-wrapper" id="mobileMenu">
+            <!-- NAV MENU -->
+            <div class="nav-menu-wrapper">
+              <ul>
+                <li>
+                  <a href="/index.html">
+                    <svg
+                      class="nav-icon"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                      />
+                    </svg>
+                    <span>Главная</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="/assets/pages/send.html">
+                    <svg
+                      class="nav-icon"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                      />
+                    </svg>
+                    <span>Посылки</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="/assets/pages/filials.html">
+                    <svg
+                      class="nav-icon"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                      />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    <span>Офисы</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="/assets/pages/chat.html">
+                    <svg
+                      class="nav-icon"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                      />
+                    </svg>
+                    <span>Чат</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- RIGHT NAV -->
+            <div class="right-nav-menu-wrapper">
+              <!-- PROFILE -->
+              <div class="profile-wrapper">
+                <div class="user-icon">
+                  <img src="/assets/images/home/user.svg" alt="user" />
+                </div>
+
+                <a href="/assets/pages/profile.html"> Timur </a>
+              </div>
+
+              <!-- LANGUAGE -->
+              <div class="language-wrapper">
+                <div class="lang-dropdown" id="langDropdown">
+                  <button
+                    class="lang-btn"
+                    aria-haspopup="listbox"
+                    aria-expanded="false"
+                  >
+                    <span class="lang-current">Ru</span>
+
+                    <svg
+                      class="lang-arrow"
+                      width="12"
+                      height="8"
+                      viewBox="0 0 12 8"
+                      fill="none"
+                    >
+                      <path
+                        d="M1 1.5L6 6.5L11 1.5"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </button>
+
+                  <ul class="lang-menu" role="listbox">
+                    <li
+                      class="lang-option active"
+                      data-value="Ru"
+                      role="option"
+                    >
+                      Ru
+                    </li>
+
+                    <li class="lang-option" data-value="En" role="option">
+                      En
+                    </li>
+
+                    <li class="lang-option" data-value="Uz" role="option">
+                      Uz
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- EXIT -->
+              <a href="/assets/pages/sign-in.html" class="exit-wrapper">
+                <img src="/assets/images/home/exit.svg" alt="Выйти" />
+              </a>
+            </div>
+          </div>
+
+          <!-- BURGER -->
+          <button class="burger-btn" id="burgerBtn" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================= PROFILE ================= -->
+    <main class="profile-page">
+      <div class="profile-container">
+        <!-- SIDEBAR -->
+        <aside class="profile-sidebar">
+          <!-- USER -->
+          <div class="profile-user">
+            <div class="profile-avatar-wrapper">
+              <div class="profile-avatar">TI</div>
+
+              <span class="profile-online"></span>
+            </div>
+
+            <h2 class="profile-name">Timur Islakayev</h2>
+
+            <p class="profile-email">timurisla...@gmail.com</p>
+          </div>
+
+          <!-- PROFILE MENU -->
+          <nav class="profile-menu">
+            <a href="#" class="profile-menu-item active" data-tab="personal">
+              <img src="/assets/images/profile/personal.svg" alt="image">
+
+              <span>Персональная информация</span>
+            </a>
+
+            <a href="#" class="profile-menu-item" data-tab="addresses">
+              <img src="/assets/images/profile/address.svg" alt="image">
+
+              <span>Мои адреса</span>
+            </a>
+
+            <a href="#" class="profile-menu-item" data-tab="password">
+              <img src="/assets/images/profile/password.svg" alt="image">
+
+              <span>Изменить пароль</span>
+            </a>
+
+            <a href="#" class="profile-menu-item" data-tab="help">
+              <img src="/assets/images/profile/help.svg" alt="image">
+
+              <span>Центр помощи</span>
+            </a>
+
+            <a
+              href="/assets/pages/sign-in.html"
+              class="profile-menu-item profile-logout"
+            >
+              <img src="/assets/images/profile/exit.svg" alt="image">
+
+              <span>Выйти</span>
+            </a>
+          </nav>
+        </aside>
+
+        <!-- CONTENT -->
+        <section class="profile-tab-content active" data-content="personal">
+          <div class="profile-card">
+            <h1 class="profile-title">Персональная информация</h1>
+
+            <!-- FORM -->
+            <form class="profile-form">
+              <!-- NAME / SURNAME -->
+              <div class="profile-form-grid">
+                <div class="profile-field">
+                  <label for="firstName"> Имя </label>
+
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    placeholder="Текст"
+                    value=""
+                  />
+                </div>
+
+                <div class="profile-field">
+                  <label for="lastName"> Фамилия </label>
+
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    placeholder="Текст"
+                    value=""
+                  />
+                </div>
+              </div>
+
+              <!-- PHONE -->
+              <div class="profile-field">
+                <label for="phone"> Телефон </label>
+
+                <div class="phone-field">
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value="+998903204177"
+                  />
+
+                  <span class="phone-verified">
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                    >
+                      <path d="M20 6L9 17l-5-5" />
+                    </svg>
+
+                    Verified
+                  </span>
+                </div>
+              </div>
+
+              <!-- EMAIL -->
+              <div class="profile-field">
+                <label for="email"> Email </label>
+
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value="timurislakayev@gmail.com"
+                />
+              </div>
+
+              <!-- COUNTRY / POST CODE -->
+              <div class="profile-form-grid">
+                <div class="profile-field">
+                  <label for="country"> Локация </label>
+
+                  <div class="select-wrapper">
+                    <select id="country" name="country">
+                      <option>Узбекистан, Ташкент</option>
+
+                      <option>Узбекистан, Самарканд</option>
+
+                      <option>Узбекистан, Бухара</option>
+                    </select>
+
+                    <svg
+                      class="select-arrow"
+                      width="12"
+                      height="7"
+                      viewBox="0 0 12 7"
+                      fill="none"
+                    >
+                      <path
+                        d="M1 1L6 6L11 1"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                <div class="profile-field">
+                  <label for="postcode"> Почтовый код </label>
+
+                  <input
+                    type="text"
+                    id="postcode"
+                    name="postcode"
+                    value="100115"
+                  />
+                </div>
+              </div>
+
+              <!-- BUTTONS -->
+              <div class="profile-actions">
+                <button type="button" class="profile-btn profile-btn-cancel">
+                  Отменить изменения
+                </button>
+
+                <button type="submit" class="profile-btn profile-btn-save">
+                  Сохранить изменения
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <section class="profile-tab-content" data-content="addresses">adres</section>
+        <section class="profile-tab-content" data-content="password">password</section>
+        <section class="profile-tab-content" data-content="help">help</section>
+      </div>
+    </main>
+
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>

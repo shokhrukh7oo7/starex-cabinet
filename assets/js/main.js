@@ -470,13 +470,13 @@ fetch('/api/v1/parcels/TRK-998-2024-001')
 document.addEventListener("DOMContentLoaded", () => {
   const routeSection = document.querySelector(".calc-route-section");
   const swapBtn = document.getElementById("swap-btn");
-
+  
   const fromSelect = document.getElementById("from-city");
   const toSelect = document.getElementById("to-city");
-
+  
   const fromCard = document.getElementById("from-card");
   const toCard = document.getElementById("to-card");
-
+  
   function updateActiveTag(cardElement, selectedValue) {
     if (!cardElement) return;
     const tags = cardElement.querySelectorAll(".tag-btn");
@@ -488,7 +488,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-
+  
   function setupTagClicks(cardElement, selectElement) {
     if (!cardElement || !selectElement) return;
     const tags = cardElement.querySelectorAll(".tag-btn");
@@ -500,15 +500,15 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
-
+  
   setupTagClicks(fromCard, fromSelect);
   setupTagClicks(toCard, toSelect);
 
   if (fromSelect) {
     fromSelect.addEventListener("change", (e) =>
       updateActiveTag(fromCard, e.target.value),
-    );
-  }
+  );
+}
   if (toSelect) {
     toSelect.addEventListener("change", (e) =>
       updateActiveTag(toCard, e.target.value),
@@ -517,13 +517,54 @@ document.addEventListener("DOMContentLoaded", () => {
   if (swapBtn) {
     swapBtn.addEventListener("click", () => {
       routeSection.classList.toggle("is-swapped");
-
+      
       const tempValue = fromSelect.value;
       fromSelect.value = toSelect.value;
       toSelect.value = tempValue;
-
+      
       updateActiveTag(fromCard, fromSelect.value);
       updateActiveTag(toCard, toSelect.value);
     });
   }
+});
+
+// ====================================== PROFILE CHANGE CONTENT ====================================
+document.addEventListener("DOMContentLoaded", () => {
+  const profileMenuItems = document.querySelectorAll(
+    ".profile-menu-item[data-tab]"
+  );
+
+  const profileContents = document.querySelectorAll(
+    ".profile-tab-content[data-content]"
+  );
+
+  profileMenuItems.forEach((item) => {
+    item.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      const tabName = item.dataset.tab;
+
+      // Убираем active со всех пунктов меню
+      profileMenuItems.forEach((menuItem) => {
+        menuItem.classList.remove("active");
+      });
+
+      // Добавляем active на нажатый пункт
+      item.classList.add("active");
+
+      // Скрываем все content
+      profileContents.forEach((content) => {
+        content.classList.remove("active");
+      });
+
+      // Показываем нужный content
+      const activeContent = document.querySelector(
+        `.profile-tab-content[data-content="${tabName}"]`
+      );
+
+      if (activeContent) {
+        activeContent.classList.add("active");
+      }
+    });
+  });
 });

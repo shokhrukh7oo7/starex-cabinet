@@ -1,3 +1,13 @@
+@media (max-width: 1200px) {
+  .profile-page .profile-container {
+    grid-template-columns: 350px minmax(0, 1fr);
+  }
+
+  .profile-page .profile-container .profile-sidebar {
+    padding: 15px;
+  }
+}
+
 @media (max-width: 992px) {
   .sign-in-wrapper {
     grid-template-columns: 1fr;
@@ -91,6 +101,36 @@
   .calc-wrapper .calc-footer {
     flex-direction: column;
   }
+  .profile-page
+    .profile-container
+    .profile-tab-content
+    .profile-card
+    .profile-form
+    .profile-form-grid {
+    grid-template-columns: 1fr;
+  }
+  .profile-page
+    .profile-container
+    .profile-tab-content
+    .profile-form
+    .profile-actions {
+    grid-template-columns: 1fr;
+  }
+  /* .profile-page .profile-container {
+    grid-template-columns: 180px minmax(0, 1fr);
+  }
+
+  .profile-page .profile-container .profile-card {
+    padding: 18px;
+  }
+
+  .profile-page .profile-container .profile-form-grid {
+    gap: 10px;
+  }
+
+  .profile-page .profile-container .profile-actions {
+    gap: 10px;
+  } */
 }
 
 @media (max-width: 768px) {
@@ -190,6 +230,57 @@
   }
   .sign-in-wrapper .left {
     gap: 50px 0;
+  }
+  .profile-page {
+    min-height: auto;
+  }
+  .profile-page .profile-container {
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+  }
+  .profile-page .profile-container .profile-sidebar {
+    width: 100%;
+  }
+  .profile-page .profile-container .profile-sidebar .profile-user {
+    margin-bottom: 15px;
+  }
+  .profile-page
+    .profile-container
+    .profile-sidebar
+    .profile-user
+    .profile-avatar-wrapper {
+    width: 70px;
+    height: 70px;
+  }
+  .profile-page
+    .profile-container
+    .profile-sidebar
+    .profile-user
+    .profile-avatar-wrapper
+    .profile-online {
+    right: 5px;
+    width: 15px;
+    height: 15px;
+  }
+  .profile-page .profile-container .profile-sidebar .profile-menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-page .profile-container .profile-sidebar .profile-menu {
+    grid-template-columns: 1fr;
+  }
+  .profile-page
+    .profile-container
+    .profile-tab-content
+    .profile-form
+    .profile-actions
+    .profile-btn {
+    font-size: 12px;
   }
 }
 
