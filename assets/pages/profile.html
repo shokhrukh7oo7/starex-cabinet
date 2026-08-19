@@ -359,10 +359,12 @@
           <div class="profile-card">
             <div class="address-wrapper">
               <h2>Мои адреса</h2>
-              <button class="add-address" id="add-address">
+              <button class="add-address" id="openAddModalBtn">
                 Добавить адрес
               </button>
             </div>
+
+            <div class="addresses-list" id="addressesList"></div>
           </div>
         </section>
 
@@ -374,6 +376,128 @@
       </div>
     </main>
 
+    <!-- МОДАЛЬНОЕ ОКНО: Добавление / Редактирование адреса -->
+    <div class="modal" id="addressModal">
+      <div class="modal-overlay" id="modalOverlay"></div>
+      <div class="modal-content">
+        <button class="modal-close" id="closeAddressModalBtn">
+          <img src="/assets/images/profile/close.svg" alt="image" />
+        </button>
+        <h3 class="modal-title" id="modalTitle">Новый адрес</h3>
+
+        <form id="addressForm" class="modal-form">
+          <input type="hidden" id="addressId" />
+
+          <div class="profile-field">
+            <label for="modalRecipient">Получатель</label>
+            <input
+              type="text"
+              id="modalRecipient"
+              required
+              placeholder="Имя Фамилия"
+            />
+          </div>
+
+          <div class="profile-field">
+            <label for="modalPhone">Телефон</label>
+            <input
+              type="tel"
+              id="modalPhone"
+              required
+              placeholder="+998 (90) 000 - 00 - 00"
+            />
+          </div>
+
+          <div class="profile-field">
+            <label for="modalExtraPhone">Доп. телефон</label>
+            <input
+              type="tel"
+              id="modalExtraPhone"
+              placeholder="+998 (90) 000 - 00 - 00"
+            />
+          </div>
+
+          <div class="profile-field">
+            <label for="modalRegion">Область</label>
+
+            <div class="select-wrapper">
+              <select id="modalRegion" required>
+                <option value="" disabled selected>Выберите</option>
+                <option value="Ташкент">Ташкент</option>
+                <option value="Самарканд">Самарканд</option>
+                <option value="Бухара">Бухара</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="profile-field checkbox-field">
+            <span>До пункта выдачи</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="modalPickup" />
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <div class="profile-field">
+            <label for="modalAddress">Точный адрес</label>
+            <input
+              type="text"
+              id="modalAddress"
+              required
+              placeholder="Например: улица Амира Темура, до 15, кв. 24"
+            />
+          </div>
+
+          <div class="profile-field checkbox-field">
+            <span>Сделать адрес основным</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="modalIsMain" />
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <button
+            type="submit"
+            class="profile-btn profile-btn-save modal-submit-btn"
+          >
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal" id="deleteModal">
+      <div class="modal-overlay" id="deleteModalOverlay"></div>
+      <div class="modal-content modal-small">
+        <button class="modal-close" id="closeDeleteModalBtn">
+          <img src="/assets/images/profile/close.svg" alt="image" />
+        </button>
+        <h3 class="modal-title center">Удалить адрес</h3>
+        <p class="modal-text center">
+          Вы уверены, что хотите удалить этот адрес? Это действие нельзя
+          отменить.
+        </p>
+
+        <div class="modal-actions">
+          <button
+            type="button"
+            class="profile-btn profile-btn-cancel"
+            id="cancelDeleteBtn"
+          >
+            Отмена
+          </button>
+          <button
+            type="button"
+            class="profile-btn modal-btn-danger"
+            id="confirmDeleteBtn"
+          >
+            Удалить
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/assets/js/imask.js"></script>
     <script src="/assets/js/main.js"></script>
   </body>
 </html>

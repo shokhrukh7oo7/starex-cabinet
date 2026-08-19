@@ -309,4 +309,18 @@
   .calc-wrapper .calc-dimensions {
     grid-template-columns: 1fr;
   }
+
+  .profile-page .profile-container .profile-card .address-wrapper {
+    flex-direction: column;
+  }
+  .profile-card .address-item-card .address-item-header {
+    flex-direction: column-reverse;
+  }
+  .profile-card .address-item-card .address-info-line {
+    align-items: center;
+    text-align: center;
+  }
+  .profile-card .address-item-card .btn-show-map {
+    margin: 0 auto;
+  }
 }

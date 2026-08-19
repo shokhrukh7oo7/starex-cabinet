@@ -2116,5 +2116,404 @@ body.no-scroll {
   background-color: var(--blue);
   color: var(--white);
 }
+
+/* Address List & Cards */
+.profile-card .addresses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.profile-card .address-item-card {
+  border: 1px solid #e4e7eb;
+  border-radius: var(--br-sm-lg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0px 8px 24px 0px #0000001f;
+}
+
+.profile-card .address-item-card .address-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-card .address-item-card .address-item-header .address-title-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.profile-card
+  .address-item-card
+  .address-item-header
+  .address-title-group
+  .address-region-title {
+  font-size: var(--fs-sm-md);
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: -0.45px;
+  color: var(--black);
+}
+
+.profile-card
+  .address-item-card
+  .address-item-header
+  .address-title-group
+  .badge-main {
+  background: #dcf6e0;
+  color: #188b30;
+  padding: 10px 16px;
+  border-radius: var(--br-sm-md);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.profile-card .address-item-card .address-item-header .address-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.profile-card
+  .address-item-card
+  .address-item-header
+  .address-actions
+  .action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--white-grey);
+  transition: color 0.2s;
+  padding: 4px;
+}
+
+.profile-card
+  .address-item-card
+  .address-item-header
+  .address-actions
+  .action-btn
+  svg {
+  width: 20px;
+  height: 20px;
+}
+
+.profile-card
+  .address-item-card
+  .address-item-header
+  .address-actions
+  .action-btn:hover {
+  color: var(--black);
+}
+
+.profile-card
+  .address-item-card
+  .address-item-header
+  .address-actions
+  .action-btn.star-btn.active {
+  color: #b3db25;
+  fill: #b3db25;
+}
+
+.profile-card .address-item-card .address-info-line {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: var(--fs-sm);
+  color: var(--black);
+  line-height: 130%;
+  letter-spacing: 0;
+}
+
+.profile-card .address-item-card .address-info-line .address-info-label {
+  color: var(--white-grey);
+  font-size: var(--fs-sm-sm);
+  line-height: 150%;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+.profile-card .address-item-card .btn-show-map {
+  align-self: flex-start;
+  padding: 16px 32px;
+  background: var(--green);
+  color: var(--blue);
+  border: none;
+  border-radius: var(--br-sm-md);
+  font-weight: 500;
+  font-size: var(--fs-sm);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.profile-card .address-item-card .btn-show-map:hover {
+  background: var(--blue);
+  color: var(--white);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  position: relative;
+  background: var(--white);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 700px;
+  padding: clamp(25px, 4vw, 50px);
+  z-index: 1001;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.modal-small {
+  max-width: 442px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--grey);
+  cursor: pointer;
+  border-radius: 50%;
+  line-height: 100%;
+  padding: 14px;
+  background-color: var(--main-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-close img {
+  width: 12px;
+  height: 12px;
+}
+
+.modal-title {
+  font-size: var(--fs-lg);
+  font-weight: 400;
+  margin-bottom: clamp(25px, 4vw, 50px);
+  color: var(--black);
+  line-height: 130%;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.modal-title.center,
+.modal-text.center {
+  text-align: center;
+}
+
+.modal-text {
+  font-size: var(--fs-sm);
+  color: var(--grey);
+  margin-bottom: clamp(25px, 4vw, 50px);
+  line-height: 130%;
+  letter-spacing: 0;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.modal-form .profile-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-form .profile-field label {
+  font-weight: 400;
+  font-size: var(--fs-sm-sm);
+  color: var(--white-grey);
+  line-height: 130%;
+  letter-spacing: 0;
+}
+
+.modal-form .profile-field input {
+  width: 100%;
+  padding: 20px 24px;
+  border: 1px solid #e5e7eb;
+  border-radius: var(--br-sm);
+  font-size: var(--fs-sm);
+  outline: none;
+  transition: border-color 0.2s ease;
+  color: var(--grey);
+}
+
+.modal-form .profile-field input:focus {
+  border-color: var(--blue);
+}
+
+.modal-form .profile-field .select-wrapper select {
+  width: 100%;
+  padding: 20px 24px;
+  border: 1px solid #e5e7eb;
+  border-radius: var(--br-sm);
+  font-size: var(--fs-sm);
+  outline: none;
+  transition: border-color 0.2s ease;
+  color: var(--grey);
+
+  background: url("data:image/svg+xml,<svg height='10px' width='10px' viewBox='0 0 16 16' fill='%23000000' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>")
+    no-repeat;
+  background-position: calc(100% - 0.75rem) center !important;
+  -moz-appearance: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  padding-right: 2rem !important;
+}
+
+.modal-form .checkbox-field {
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.modal-form .checkbox-field span {
+  font-weight: 400;
+  font-size: var(--fs-sm);
+  color: var(--white-grey);
+}
+
+.modal-form .checkbox-field .toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 64px;
+  height: 32px;
+}
+
+.modal-form .checkbox-field .toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.modal-form .checkbox-field .toggle-switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e4e7eb;
+  transition: 0.3s;
+}
+
+.modal-form .checkbox-field .toggle-switch .slider:before {
+  position: absolute;
+  content: "";
+  height: 24px;
+  width: 24px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--white);
+  transition: 0.3s;
+}
+
+.modal-form .checkbox-field .toggle-switch .slider.round {
+  border-radius: 100px;
+}
+
+.modal-form .checkbox-field .toggle-switch .slider.round:before {
+  border-radius: 50%;
+}
+
+.modal-form .checkbox-field .toggle-switch input:checked + .slider {
+  background-color: var(--green);
+}
+
+.modal-form .checkbox-field .toggle-switch input:checked + .slider:before {
+  transform: translateX(32px);
+}
+
+.modal-submit-btn {
+  border-radius: var(--br-md);
+  font-weight: 600;
+  font-size: var(--fs-sm-sm);
+  letter-spacing: 2px;
+  padding: 20px;
+  background-color: var(--green);
+  color: var(--blue);
+  border: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+}
+.modal-submit-btn:hover {
+  background-color: var(--blue);
+  color: var(--white);
+}
+
+.modal-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.modal-actions .profile-btn-cancel {
+  border-radius: var(--br-md);
+  font-weight: 600;
+  font-size: var(--fs-sm-sm);
+  letter-spacing: 2px;
+  padding: 20px;
+  border: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+  background-color: #e8e8e8;
+  color: var(--white-grey);
+}
+
+.modal-actions .profile-btn-cancel:hover {
+  background-color: var(--main-bg);
+}
+
+.modal-actions .modal-btn-danger {
+  background: #e53e3e;
+  color: white;
+  border-radius: var(--br-md);
+  font-weight: 600;
+  font-size: var(--fs-sm-sm);
+  letter-spacing: 2px;
+  padding: 20px;
+  border: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+}
+
+.modal-actions .modal-btn-danger:hover {
+  background-color: #c53030;
+}
 /* address end */
 /* PROFILE END */
