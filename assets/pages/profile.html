@@ -178,12 +178,9 @@
       </div>
     </header>
 
-    <!-- ================= PROFILE ================= -->
     <main class="profile-page">
       <div class="profile-container">
-        <!-- SIDEBAR -->
         <aside class="profile-sidebar">
-          <!-- USER -->
           <div class="profile-user">
             <div class="profile-avatar-wrapper">
               <div class="profile-avatar">TI</div>
@@ -196,28 +193,27 @@
             <p class="profile-email">timurisla...@gmail.com</p>
           </div>
 
-          <!-- PROFILE MENU -->
           <nav class="profile-menu">
             <a href="#" class="profile-menu-item active" data-tab="personal">
-              <img src="/assets/images/profile/personal.svg" alt="image">
+              <img src="/assets/images/profile/personal.svg" alt="image" />
 
               <span>Персональная информация</span>
             </a>
 
             <a href="#" class="profile-menu-item" data-tab="addresses">
-              <img src="/assets/images/profile/address.svg" alt="image">
+              <img src="/assets/images/profile/address.svg" alt="image" />
 
               <span>Мои адреса</span>
             </a>
 
             <a href="#" class="profile-menu-item" data-tab="password">
-              <img src="/assets/images/profile/password.svg" alt="image">
+              <img src="/assets/images/profile/password.svg" alt="image" />
 
               <span>Изменить пароль</span>
             </a>
 
             <a href="#" class="profile-menu-item" data-tab="help">
-              <img src="/assets/images/profile/help.svg" alt="image">
+              <img src="/assets/images/profile/help.svg" alt="image" />
 
               <span>Центр помощи</span>
             </a>
@@ -226,21 +222,18 @@
               href="/assets/pages/sign-in.html"
               class="profile-menu-item profile-logout"
             >
-              <img src="/assets/images/profile/exit.svg" alt="image">
+              <img src="/assets/images/profile/exit.svg" alt="image" />
 
               <span>Выйти</span>
             </a>
           </nav>
         </aside>
 
-        <!-- CONTENT -->
         <section class="profile-tab-content active" data-content="personal">
           <div class="profile-card">
             <h1 class="profile-title">Персональная информация</h1>
 
-            <!-- FORM -->
             <form class="profile-form">
-              <!-- NAME / SURNAME -->
               <div class="profile-form-grid">
                 <div class="profile-field">
                   <label for="firstName"> Имя </label>
@@ -267,7 +260,6 @@
                 </div>
               </div>
 
-              <!-- PHONE -->
               <div class="profile-field">
                 <label for="phone"> Телефон </label>
 
@@ -296,7 +288,6 @@
                 </div>
               </div>
 
-              <!-- EMAIL -->
               <div class="profile-field">
                 <label for="email"> Email </label>
 
@@ -308,7 +299,6 @@
                 />
               </div>
 
-              <!-- COUNTRY / POST CODE -->
               <div class="profile-form-grid">
                 <div class="profile-field">
                   <label for="country"> Локация </label>
@@ -352,7 +342,6 @@
                 </div>
               </div>
 
-              <!-- BUTTONS -->
               <div class="profile-actions">
                 <button type="button" class="profile-btn profile-btn-cancel">
                   Отменить изменения
@@ -366,8 +355,21 @@
           </div>
         </section>
 
-        <section class="profile-tab-content" data-content="addresses">adres</section>
-        <section class="profile-tab-content" data-content="password">password</section>
+        <section class="profile-tab-content" data-content="addresses">
+          <div class="profile-card">
+            <div class="address-wrapper">
+              <h2>Мои адреса</h2>
+              <button class="add-address" id="add-address">
+                Добавить адрес
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="profile-tab-content" data-content="password">
+          password
+        </section>
+
         <section class="profile-tab-content" data-content="help">help</section>
       </div>
     </main>

@@ -1583,6 +1583,7 @@ body.no-scroll {
 /* CALCULATOR END */
 
 /* PROFILE START */
+/* personal start */
 .profile-page {
   min-height: calc(100vh - 80px);
   background: var(--main-bg);
@@ -2080,4 +2081,40 @@ body.no-scroll {
   background-color: var(--blue);
   color: var(--white);
 }
+/* personal end */
+
+/* address start */
+.profile-page .profile-container .profile-card .address-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-page .profile-container .profile-card .address-wrapper h2 {
+  font-weight: 400;
+  font-size: var(--fs-lg);
+  color: var(--black);
+  line-height: 130%;
+  letter-spacing: 0;
+}
+
+.profile-page .profile-container .profile-card .address-wrapper button {
+  border-radius: var(--br-md);
+  font-weight: 600;
+  font-size: var(--fs-sm-sm);
+  letter-spacing: 2px;
+  padding: 20px;
+  background-color: var(--green);
+  color: var(--blue);
+  border: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+}
+
+.profile-page .profile-container .profile-card .address-wrapper button:hover {
+  background-color: var(--blue);
+  color: var(--white);
+}
+/* address end */
 /* PROFILE END */
