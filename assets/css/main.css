@@ -64,8 +64,8 @@
   --button-bg: rgba(74, 85, 101, 0.1);
 
   /* font sizes */
-  --fs-sm-sm: clamp(14px, 0.9vw, 14px);
-  --fs-sm: clamp(16px, 1vw, 16px);
+  --fs-sm-sm: clamp(12px, 0.9vw, 14px);
+  --fs-sm: clamp(13px, 1.1vw, 16px);
   --fs-sm-md: clamp(16px, 1.5vw, 20px);
   --fs-md: clamp(16px, 1.5vw, 24px);
   --fs-lg: clamp(24px, 2vw, 32px);
@@ -137,6 +137,22 @@ select {
   margin: 0 auto;
   padding: 0 clamp(20px, 3vw, 50px);
 }
+
+*::-webkit-scrollbar {
+  width: 14px;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-left: 1px solid transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: grey;
+  border-radius: 20px;
+  border: 4px solid transparent;
+  background-clip: padding-box;
+}
 /* ====================================================================== */
 /* language dropdown start */
 .lang-dropdown {
@@ -148,7 +164,7 @@ select {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 15px 16px;
+  padding: clamp(10px, 1vw, 16px);
   background-color: var(--button-bg);
   border: none;
   border-radius: var(--br-sm-lg);
@@ -778,7 +794,6 @@ select {
 .nav .logo-wrapper img {
   width: 100%;
   max-width: 212px;
-  /* height: 72px; */
 }
 
 .mobile-menu-wrapper {
@@ -859,8 +874,8 @@ select {
 .nav .right-nav-menu-wrapper .exit-wrapper {
   background-color: var(--button-bg);
   border-radius: var(--br-lg);
-  height: 48px;
-  width: 48px;
+  height: clamp(37px, 5vw, 48px);
+  width: clamp(37px, 5vw, 48px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -872,8 +887,8 @@ select {
 }
 
 .nav .right-nav-menu-wrapper .exit-wrapper img {
-  width: 20px;
-  height: 20px;
+  width: clamp(15px, 1.5vw, 20px);
+  height: clamp(15px, 1.5vw, 20px);
 }
 .burger-btn {
   display: none;
@@ -886,26 +901,6 @@ select {
   cursor: pointer;
   padding: 0;
   z-index: 1001;
-}
-
-.burger-btn span {
-  width: 100%;
-  height: 3px;
-  background-color: var(--black, #000);
-  border-radius: 2px;
-  transition: all 0.3s ease-in-out;
-}
-
-.burger-btn.active span:nth-child(1) {
-  transform: translateY(9px) rotate(45deg);
-}
-
-.burger-btn.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.burger-btn.active span:nth-child(3) {
-  transform: translateY(-9px) rotate(-45deg);
 }
 
 body.no-scroll {
@@ -1000,11 +995,6 @@ body.no-scroll {
   padding: 16px;
 }
 
-/* .home-tab-container .tab-wrapper .tab-pane.active {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-} */
 .home-tab-container .tab-wrapper .tab-pane {
   display: flex;
   flex-direction: column;
@@ -1014,7 +1004,8 @@ body.no-scroll {
 .home-tab-container .tab-wrapper .tab-pane input {
   width: 100%;
   border: 1px solid #e5e7eb;
-  padding: 20px 24px;
+  /* padding: 20px 24px; */
+  padding: clamp(10px, 1.5vw, 20px) clamp(14px, 1.5vw, 24px);
   border-radius: var(--br-sm);
   font-weight: 400;
   font-size: var(--fs-sm);
@@ -1033,7 +1024,7 @@ body.no-scroll {
 }
 
 .home-tab-container .tab-wrapper .tab-pane button {
-  padding: 20px;
+  padding: clamp(10px, 1.5vw, 20px);
   width: 100%;
   background-color: var(--green);
   color: var(--blue);
@@ -1130,15 +1121,14 @@ body.no-scroll {
   background-color: #e53833;
 }
 
-/* Карточка посылки */
 .home-tab .parcel-card-wrapper {
   background: #ffffff;
-  border-radius: var(--br-lg);
+  border-radius: var(--br-md);
   padding: clamp(8px, 2vw, 32px);
 }
 .home-tab .parcel-card {
   background: var(--main-bg);
-  border-radius: var(--br-lg);
+  border-radius: var(--br-md);
   padding: clamp(16px, 2vw, 32px);
   display: flex;
   flex-direction: column;
@@ -1220,7 +1210,7 @@ body.no-scroll {
   height: 100%;
   background-color: var(--blue);
   border-radius: 2px;
-  width: 0%; /* Начальное значение, меняется через JS */
+  width: 0%;
   transition: width 0.5s ease-in-out;
 }
 
@@ -1235,7 +1225,7 @@ body.no-scroll {
   border-radius: 50%;
   position: absolute;
   top: 50%;
-  left: 0%; /* Начальное значение, меняется через JS */
+  left: 0%;
   transform: translate(-50%, -50%);
   transition: left 0.5s ease-in-out;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
@@ -1271,7 +1261,6 @@ body.no-scroll {
   line-height: 100%;
 }
 
-/* Детали посылки */
 .home-tab .parcel-card .parcel-details {
   display: flex;
   flex-direction: column;
@@ -1328,7 +1317,7 @@ body.no-scroll {
   color: var(--blue);
   border: none;
   border-radius: calc(var(--br-md) - 4px);
-  padding: 16px 32px;
+  padding: clamp(10px, 1vw, 16px) clamp(16px, 2vw, 32px);
   font-size: var(--fs-sm-sm);
   font-weight: 500;
   cursor: pointer;
@@ -1362,7 +1351,7 @@ body.no-scroll {
 .calc-container .back-wrapper a {
   background-color: var(--main-bg);
   border-radius: var(--br-sm-md);
-  padding: 16px clamp(16px, 2vw, 32px);
+  padding: clamp(10px, 1vw, 16px) clamp(16px, 2vw, 32px);
   font-weight: 500;
   font-size: var(--fs-sm);
   color: var(--white-grey);
@@ -1445,7 +1434,8 @@ body.no-scroll {
   .custom-select-wrapper
   .city-select {
   width: 100%;
-  padding: 20px 24px;
+  /* padding: 20px 24px; */
+  padding: clamp(10px, 1.5vw, 20px) clamp(14px, 1.5vw, 24px);
   background: var(--white);
   border: 1px solid #e5e7eb;
   border-radius: var(--br-sm);
@@ -1497,8 +1487,8 @@ body.no-scroll {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 .calc-wrapper .swap-btn img {
-  width: 25px;
-  height: 25px;
+  width: clamp(15px, 1.5vw, 25px);
+  height: clamp(15px, 1.5vw, 25px);
 }
 
 .calc-wrapper .swap-btn:hover {
@@ -1524,7 +1514,8 @@ body.no-scroll {
 
 .calc-wrapper .calc-dimensions .input-group input {
   width: 100%;
-  padding: 20px 24px;
+  /* padding: 20px 24px; */
+  padding: clamp(10px, 1.5vw, 20px) clamp(14px, 1.5vw, 24px);
   border: 1px solid #e5e7eb;
   border-radius: var(--br-sm);
   font-size: var(--fs-sm);
@@ -1546,8 +1537,7 @@ body.no-scroll {
 .calc-wrapper .calc-footer .calc-submit-btn {
   background: var(--green);
   border: none;
-  /* padding: clamp(10px, 1.5vw, 20px) clamp(20px, 3vw, 40px); */
-  padding: 20px 40px;
+  padding: clamp(10px, 1.5vw, 20px) clamp(20px, 3vw, 40px);
   border-radius: var(--br-md);
   font-weight: 700;
   font-size: var(--fs-sm-sm);
@@ -1595,8 +1585,7 @@ body.no-scroll {
 /* PROFILE START */
 /* personal start */
 .profile-page {
-  min-height: calc(100vh - 80px);
-  /* background: var(--main-bg); */
+  min-height: calc(100vh - 120px);
 }
 
 .profile-page .profile-container {
@@ -1605,7 +1594,7 @@ body.no-scroll {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 350px minmax(0, 1fr);
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 120px);
 }
 
 .profile-page .profile-container .profile-sidebar {
@@ -1622,52 +1611,6 @@ body.no-scroll {
   flex-direction: column;
   align-items: center;
   margin-bottom: 24px;
-}
-
-.profile-page
-  .profile-container
-  .profile-sidebar
-  .profile-user
-  .profile-avatar-wrapper {
-  position: relative;
-  width: 110px;
-  height: 110px;
-  margin-bottom: 8px;
-}
-
-.profile-page
-  .profile-container
-  .profile-sidebar
-  .profile-user
-  .profile-avatar-wrapper
-  .profile-avatar {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--blue);
-  color: var(--white);
-  border-radius: 50%;
-  font-size: var(--fs-lg);
-  font-weight: 500;
-  box-shadow: 0 0 0 2px rgba(25, 33, 137, 0.15);
-}
-
-.profile-page
-  .profile-container
-  .profile-sidebar
-  .profile-user
-  .profile-avatar-wrapper
-  .profile-online {
-  position: absolute;
-  right: 15px;
-  bottom: 0px;
-  width: 20px;
-  height: 20px;
-  background: var(--green);
-  border: 2px solid var(--white);
-  border-radius: 50%;
 }
 
 .profile-page .profile-container .profile-sidebar .profile-user .profile-name {
@@ -1705,7 +1648,7 @@ body.no-scroll {
   .profile-menu-item {
   width: 100%;
   min-height: 25px;
-  padding: 18px 20px;
+  padding: clamp(10px, 1.1vw, 18px) clamp(14px, 1.5vw, 20px);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -1774,12 +1717,6 @@ body.no-scroll {
     hue-rotate(237deg) brightness(85%) contrast(101%);
 }
 
-/* .profile-content {
-  min-width: 0;
-
-  padding: 22px 20px 50px;
-} */
-
 .profile-page .profile-container .profile-tab-content {
   display: none;
   min-width: 0;
@@ -1806,7 +1743,6 @@ body.no-scroll {
 
 .profile-page .profile-container .profile-tab-content .profile-card {
   width: 100%;
-  /* max-width: 1120px; */
   background: var(--white);
   border-radius: var(--br-md);
   padding: clamp(16px, 2vw, 32px);
@@ -1890,7 +1826,7 @@ body.no-scroll {
   .profile-field
   select {
   width: 100%;
-  padding: 20px 24px;
+  padding: clamp(10px, 1.5vw, 20px) clamp(14px, 1.5vw, 24px);
   border: 1px solid #e4e7eb;
   border-radius: var(--br-sm);
   outline: none;
@@ -1975,8 +1911,8 @@ body.no-scroll {
   .phone-field
   .phone-verified
   svg {
-  width: 20px;
-  height: 20px;
+  width: clamp(15px, 1.5vw, 20px);
+  height: clamp(15px, 1.5vw, 20px);
   background: #39a844;
   color: var(--white);
   border-radius: 50%;
@@ -2035,7 +1971,7 @@ body.no-scroll {
   .profile-actions
   .profile-btn {
   border: 0;
-  padding: 20px;
+  padding: clamp(10px, 1.5vw, 20px);
   border-radius: var(--br-md);
   font-family: inherit;
   font-size: var(--fs-sm-sm);
@@ -2115,7 +2051,7 @@ body.no-scroll {
   font-weight: 600;
   font-size: var(--fs-sm-sm);
   letter-spacing: 2px;
-  padding: 20px;
+  padding: clamp(10px, 1.5vw, 20px);
   background-color: var(--green);
   color: var(--blue);
   border: none;
@@ -2259,6 +2195,7 @@ body.no-scroll {
   font-size: var(--fs-sm);
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  display: none;
 }
 
 .profile-card .address-item-card .btn-show-map:hover {
@@ -2275,7 +2212,7 @@ body.no-scroll {
   display: none;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 1001;
 }
 
 .modal.active {
@@ -2294,11 +2231,11 @@ body.no-scroll {
 .modal-content {
   position: relative;
   background: var(--white);
-  border-radius: 20px;
+  border-radius: 10px;
   width: 100%;
   max-width: 700px;
   padding: clamp(25px, 4vw, 50px);
-  z-index: 1001;
+  z-index: 1003;
   max-height: 90vh;
   overflow-y: auto;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -2356,7 +2293,7 @@ body.no-scroll {
 .modal-form {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: clamp(16px, 2vw, 32px);
 }
 
 .modal-form .profile-field {
@@ -2375,7 +2312,7 @@ body.no-scroll {
 
 .modal-form .profile-field input {
   width: 100%;
-  padding: 20px 24px;
+  padding: clamp(10px, 1.5vw, 20px) clamp(14px, 1.5vw, 24px);
   border: 1px solid #e5e7eb;
   border-radius: var(--br-sm);
   font-size: var(--fs-sm);
@@ -2394,7 +2331,7 @@ body.no-scroll {
 
 .modal-form .profile-field .select-wrapper select {
   width: 100%;
-  padding: 20px 24px;
+  padding: clamp(10px, 1.5vw, 20px) clamp(14px, 1.5vw, 24px);
   border: 1px solid #e5e7eb;
   border-radius: var(--br-sm);
   font-size: var(--fs-sm);
@@ -2479,7 +2416,7 @@ body.no-scroll {
   font-weight: 600;
   font-size: var(--fs-sm-sm);
   letter-spacing: 2px;
-  padding: 20px;
+  padding: clamp(10px, 1.5vw, 20px);
   background-color: var(--green);
   color: var(--blue);
   border: none;

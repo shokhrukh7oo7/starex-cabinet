@@ -576,14 +576,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let addressToDeleteId = null;
 
-  // Элементы UI
   const addressesListEl = document.getElementById("addressesList");
   const addressModal = document.getElementById("addressModal");
   const deleteModal = document.getElementById("deleteModal");
   const addressForm = document.getElementById("addressForm");
   const modalTitle = document.getElementById("modalTitle");
 
-  // Кнопки открытия/закрытия
   const openAddModalBtn = document.getElementById("openAddModalBtn");
   const closeAddressModalBtn = document.getElementById("closeAddressModalBtn");
   const modalOverlay = document.getElementById("modalOverlay");
@@ -592,7 +590,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const cancelDeleteBtn = document.getElementById("cancelDeleteBtn");
   const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
 
-  // Поля формы
   const addressIdInput = document.getElementById("addressId");
   const modalRecipient = document.getElementById("modalRecipient");
   const modalPhone = document.getElementById("modalPhone");
@@ -602,7 +599,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalAddress = document.getElementById("modalAddress");
   const modalIsMain = document.getElementById("modalIsMain");
 
-  // Функция отрисовки карточек адресов
   function renderAddresses() {
     addressesListEl.innerHTML = "";
 
@@ -611,44 +607,44 @@ document.addEventListener("DOMContentLoaded", () => {
       card.className = "address-item-card";
 
       card.innerHTML = `
-        <div class="address-item-header">
-          <div class="address-title-group">
-            <span class="address-region-title">${item.region}</span>
-            ${item.isMain ? '<span class="badge-main">Основной</span>' : ""}
-          </div>
-          <div class="address-actions">
-            <button class="action-btn star-btn ${item.isMain ? "active" : ""}" data-id="${item.id}" title="${item.isMain ? "Основной адрес" : "Сделать основным"}">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="${item.isMain ? "currentColor" : "none"}" stroke="currentColor" stroke-width="2">
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-              </svg>
-            </button>
-            <button class="action-btn edit-btn" data-id="${item.id}" title="Редактировать">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+      <div class="address-item-header">
+      <div class="address-title-group">
+      <span class="address-region-title">${item.region}</span>
+      ${item.isMain ? '<span class="badge-main">Основной</span>' : ""}
+      </div>
+      <div class="address-actions">
+      <button class="action-btn star-btn ${item.isMain ? "active" : ""}" data-id="${item.id}" title="${item.isMain ? "Основной адрес" : "Сделать основным"}">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="${item.isMain ? "currentColor" : "none"}" stroke="currentColor" stroke-width="2">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+      </svg>
+      </button>
+      <button class="action-btn edit-btn" data-id="${item.id}" title="Редактировать">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                 <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-              </svg>
-            </button>
-            <button class="action-btn delete-btn" data-id="${item.id}" title="Удалить">
+                </svg>
+                </button>
+                <button class="action-btn delete-btn" data-id="${item.id}" title="Удалить">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="3 6 5 6 21 6"></polyline>
                 <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
               </svg>
             </button>
-          </div>
+            </div>
         </div>
-
+        
         <div class="address-info-line">
-          <div class="address-info-label">Адрес:</div>
-          <div>${item.address}</div>
+        <div class="address-info-label">Адрес:</div>
+        <div>${item.address}</div>
         </div>
-
+        
         <div class="address-info-line">
-          <div class="address-info-label">Телефон:</div>
-          <div>${item.phone}</div>
+        <div class="address-info-label">Телефон:</div>
+        <div>${item.phone}</div>
         </div>
-
+        
         <button class="btn-show-map">Показать на карте</button>
-      `;
+        `;
 
       addressesListEl.appendChild(card);
     });
@@ -656,9 +652,7 @@ document.addEventListener("DOMContentLoaded", () => {
     bindCardEvents();
   }
 
-  // Привязка событий к элементам управления карточками
   function bindCardEvents() {
-    // Звезда (сделать основным)
     document.querySelectorAll(".star-btn").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         const id = Number(e.currentTarget.dataset.id);
@@ -670,7 +664,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // Редактирование
     document.querySelectorAll(".edit-btn").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         const id = Number(e.currentTarget.dataset.id);
@@ -691,7 +684,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // Удаление
     document.querySelectorAll(".delete-btn").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         addressToDeleteId = Number(e.currentTarget.dataset.id);
@@ -700,7 +692,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Управление модальными окнами
   function openModal(modal) {
     modal.classList.add("active");
   }
@@ -725,7 +716,6 @@ document.addEventListener("DOMContentLoaded", () => {
   deleteModalOverlay.addEventListener("click", () => closeModal(deleteModal));
   cancelDeleteBtn.addEventListener("click", () => closeModal(deleteModal));
 
-  // Подтверждение удаления
   confirmDeleteBtn.addEventListener("click", () => {
     if (addressToDeleteId !== null) {
       addresses = addresses.filter((a) => a.id !== addressToDeleteId);
@@ -735,7 +725,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Отправка формы (Добавление / Редактирование)
   addressForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -768,6 +757,61 @@ document.addEventListener("DOMContentLoaded", () => {
     closeModal(addressModal);
   });
 
-  // Инициализация при старте
   renderAddresses();
+});
+// ====================================== PROFILE ADDRESS ====================================
+document.addEventListener("DOMContentLoaded", () => {
+  if (!document.body.classList.contains("profile-page-body")) {
+    return;
+  }
+
+  const burgerBtn = document.getElementById("burgerBtn");
+  const profileSidebar = document.querySelector(".profile-sidebar");
+  const overlay = document.getElementById("profileSidebarOverlay");
+
+  if (!burgerBtn || !profileSidebar || !overlay) return;
+
+  function openProfileSidebar() {
+    burgerBtn.classList.add("active");
+    burgerBtn.setAttribute("aria-expanded", "true");
+
+    profileSidebar.classList.add("mobile-open");
+    overlay.classList.add("active");
+
+    document.body.classList.add("no-scroll");
+  }
+
+  function closeProfileSidebar() {
+    burgerBtn.classList.remove("active");
+    burgerBtn.setAttribute("aria-expanded", "false");
+
+    profileSidebar.classList.remove("mobile-open");
+    overlay.classList.remove("active");
+
+    document.body.classList.remove("no-scroll");
+  }
+
+  burgerBtn.addEventListener("click", () => {
+    if (profileSidebar.classList.contains("mobile-open")) {
+      closeProfileSidebar();
+    } else {
+      openProfileSidebar();
+    }
+  });
+
+  overlay.addEventListener("click", closeProfileSidebar);
+
+  profileSidebar
+    .querySelectorAll(".profile-menu-item[data-tab]")
+    .forEach((item) => {
+      item.addEventListener("click", () => {
+        closeProfileSidebar();
+      });
+    });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 992) {
+      closeProfileSidebar();
+    }
+  });
 });

@@ -2,10 +2,6 @@
   .profile-page .profile-container {
     grid-template-columns: 350px minmax(0, 1fr);
   }
-
-  .profile-page .profile-container .profile-sidebar {
-    padding: 15px;
-  }
 }
 
 @media (max-width: 992px) {
@@ -35,10 +31,10 @@
     display: flex;
     align-items: center;
     gap: 8px;
-  }
 
-  .nav .right-nav-menu-wrapper .profile-wrapper a {
-    display: none;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr max-content max-content;
   }
 
   .nav-menu-wrapper {
@@ -46,9 +42,9 @@
     bottom: 8px;
     left: 50%;
     transform: translateX(-50%);
-    width: calc(100% - 50px);
+    width: calc(100% - 40px);
     /* max-width: 400px; */
-    border-radius: 200px;
+    border-radius: var(--br-md);
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
     padding: 13.5px 24.5px;
     z-index: 999;
@@ -92,6 +88,10 @@
     padding-bottom: 90px;
   }
 
+  .profile-tab-content {
+    padding-bottom: 90px !important;
+  }
+
   .calc-wrapper .calc-route-section {
     flex-direction: column;
   }
@@ -116,21 +116,94 @@
     .profile-actions {
     grid-template-columns: 1fr;
   }
-  /* .profile-page .profile-container {
-    grid-template-columns: 180px minmax(0, 1fr);
+
+  .language-wrapper {
+    display: flex;
+    align-items: center;
   }
 
-  .profile-page .profile-container .profile-card {
-    padding: 18px;
+  .profile-page-body .burger-btn {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
   }
 
-  .profile-page .profile-container .profile-form-grid {
-    gap: 10px;
+  .profile-page-body .nav .right-nav-menu-wrapper .profile-wrapper,
+  .profile-page-body .nav .right-nav-menu-wrapper .exit-wrapper {
+    display: none;
   }
 
-  .profile-page .profile-container .profile-actions {
-    gap: 10px;
-  } */
+  .burger-btn span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--black);
+    border-radius: 10px;
+    transition:
+      transform 0.25s ease,
+      opacity 0.25s ease;
+  }
+
+  .burger-btn.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .burger-btn.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .burger-btn.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .profile-page .profile-container {
+    display: block;
+    background-color: #f2f2f2;
+  }
+
+  .profile-page .profile-container .profile-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: min(360px, 85vw);
+    height: 100vh;
+    z-index: 1000;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .profile-page .profile-container .profile-sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .profile-sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+  .profile-sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  .home-nav .logo-wrapper {
+    display: none;
+  }
+  .calculator-page {
+    padding-bottom: 90px;
+  }
+  .profile-nav .right-nav-menu-wrapper {
+    display: flex;
+    width: auto;
+  }
 }
 
 @media (max-width: 768px) {
@@ -188,7 +261,7 @@
     background-color: var(--blue);
     color: var(--green);
     border-radius: var(--br-md);
-    padding: 20px;
+    padding: clamp(10px, 1.5vw, 20px);
     font-size: var(--fs-sm-sm);
     font-weight: 600;
     text-transform: uppercase;
@@ -197,8 +270,8 @@
   }
 
   .btn-calc-mobile img {
-    width: 20px;
-    height: 20px;
+    width: clamp(15px, 1.5vw, 20px);
+    height: clamp(15px, 1.5vw, 20px);
   }
 
   .home-tab .parcels-section .filters-bar .filter-group .filter-label {
@@ -237,35 +310,16 @@
   .profile-page .profile-container {
     display: flex;
     flex-direction: column;
-    min-height: auto;
   }
-  .profile-page .profile-container .profile-sidebar {
-    width: 100%;
-  }
+
   .profile-page .profile-container .profile-sidebar .profile-user {
     margin-bottom: 15px;
+    margin-top: 40px;
   }
-  .profile-page
-    .profile-container
-    .profile-sidebar
-    .profile-user
-    .profile-avatar-wrapper {
-    width: 70px;
-    height: 70px;
-  }
-  .profile-page
-    .profile-container
-    .profile-sidebar
-    .profile-user
-    .profile-avatar-wrapper
-    .profile-online {
-    right: 5px;
-    width: 15px;
-    height: 15px;
-  }
+
   .profile-page .profile-container .profile-sidebar .profile-menu {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 5px;
   }
 }
@@ -274,20 +328,9 @@
   .profile-page .profile-container .profile-sidebar .profile-menu {
     grid-template-columns: 1fr;
   }
-  .profile-page
-    .profile-container
-    .profile-tab-content
-    .profile-form
-    .profile-actions
-    .profile-btn {
-    font-size: 12px;
-  }
 }
 
 @media (max-width: 576px) {
-  .nav .logo-wrapper {
-    display: none;
-  }
   .nav .right-nav-menu-wrapper {
     width: 100%;
     justify-content: space-between;
@@ -322,5 +365,15 @@
   }
   .profile-card .address-item-card .btn-show-map {
     margin: 0 auto;
+  }
+  .profile-page .profile-container .profile-sidebar.mobile-open {
+    width: 100%;
+  }
+  .profile-page
+    .profile-container
+    .profile-tab-content
+    .profile-card
+    .profile-title {
+    text-align: center;
   }
 }
