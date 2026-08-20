@@ -46,8 +46,8 @@
     bottom: 8px;
     left: 50%;
     transform: translateX(-50%);
-    width: calc(100% - 32px);
-    max-width: 400px;
+    width: calc(100% - 50px);
+    /* max-width: 400px; */
     border-radius: 200px;
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
     padding: 13.5px 24.5px;
@@ -86,11 +86,11 @@
   .nav .nav-menu-wrapper ul li a.active .nav-icon {
     stroke: var(--blue);
   }
-
-  body {
-    padding-bottom: 80px;
-  }
   /* navbar end */
+
+  .home-tab {
+    padding-bottom: 90px;
+  }
 
   .calc-wrapper .calc-route-section {
     flex-direction: column;

@@ -42,6 +42,14 @@
   font-display: swap;
 }
 
+/* aeroport */
+@font-face {
+  font-family: "Aeroport";
+  src: url("/assets/font/Aeroport-regular-trial.otf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 /* ROOT */
 :root {
   /* colors */
@@ -72,6 +80,7 @@
 
   /* font family */
   --ff-primary: "Onest", sans-serif;
+  --ff-secondary: "Aeroport", sans-serif;
 }
 
 /* RESET */
@@ -796,6 +805,7 @@ select {
   color: var(--black);
   letter-spacing: 0;
   line-height: 100%;
+  font-family: var(--ff-secondary);
 }
 
 .nav .nav-menu-wrapper ul li a.active {
@@ -1586,7 +1596,7 @@ body.no-scroll {
 /* personal start */
 .profile-page {
   min-height: calc(100vh - 80px);
-  background: var(--main-bg);
+  /* background: var(--main-bg); */
 }
 
 .profile-page .profile-container {
@@ -1774,6 +1784,7 @@ body.no-scroll {
   display: none;
   min-width: 0;
   padding: clamp(25px, 4vw, 50px);
+  background-color: var(--main-bg);
 }
 
 .profile-page .profile-container .profile-tab-content.active {
