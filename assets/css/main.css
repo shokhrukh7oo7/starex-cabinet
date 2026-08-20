@@ -2469,3 +2469,27 @@ body.no-scroll {
 }
 /* address end */
 /* PROFILE END */
+
+/* PACKAGE PAGE START */
+/* .pack-container {
+  background-color: #f2f2f2;
+  padding: clamp(20px, 4vw, 50px) 0;
+  min-height: 100vh;
+} */
+.pack-wrapper {
+  padding: clamp(20px, 4vw, 50px) 0;
+}
+.pack-wrapper .pack-header-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: clamp(25px, 4vw, 50px);
+}
+.pack-wrapper .pack-header-wrapper h1 {
+  font-size: var(--fs-xl);
+  font-weight: 400;
+  color: var(--black);
+  line-height: 130%;
+  letter-spacing: 0;
+}
+/* PACKAGE PAGE END */
