@@ -600,6 +600,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalIsMain = document.getElementById("modalIsMain");
 
   function renderAddresses() {
+    if(!addressesListEl)  return;
+
     addressesListEl.innerHTML = "";
 
     addresses.forEach((item) => {
@@ -700,62 +702,85 @@ document.addEventListener("DOMContentLoaded", () => {
     modal.classList.remove("active");
   }
 
-  openAddModalBtn.addEventListener("click", () => {
-    addressForm.reset();
-    addressIdInput.value = "";
-    modalTitle.textContent = "Новый адрес";
-    openModal(addressModal);
-  });
+  if (openAddModalBtn) {
+    openAddModalBtn.addEventListener("click", () => {
+      addressForm.reset();
+      addressIdInput.value = "";
+      modalTitle.textContent = "Новый адрес";
+      openModal(addressModal);
+    });
+  }
 
-  closeAddressModalBtn.addEventListener("click", () =>
-    closeModal(addressModal),
-  );
-  modalOverlay.addEventListener("click", () => closeModal(addressModal));
+  if (closeAddressModalBtn) {
+    closeAddressModalBtn.addEventListener("click", () =>
+      closeModal(addressModal),
+    );
+  }
 
-  closeDeleteModalBtn.addEventListener("click", () => closeModal(deleteModal));
-  deleteModalOverlay.addEventListener("click", () => closeModal(deleteModal));
-  cancelDeleteBtn.addEventListener("click", () => closeModal(deleteModal));
+  if (modalOverlay) {
+    modalOverlay.addEventListener("click", () => closeModal(addressModal));
+  }
 
-  confirmDeleteBtn.addEventListener("click", () => {
-    if (addressToDeleteId !== null) {
-      addresses = addresses.filter((a) => a.id !== addressToDeleteId);
-      addressToDeleteId = null;
+  if (closeDeleteModalBtn) {
+    closeDeleteModalBtn.addEventListener("click", () =>
+      closeModal(deleteModal),
+    );
+  }
+
+  if (deleteModalOverlay) {
+    deleteModalOverlay.addEventListener("click", () => closeModal(deleteModal));
+  }
+
+  if (cancelDeleteBtn) {
+    cancelDeleteBtn.addEventListener("click", () => closeModal(deleteModal));
+  }
+
+  if (confirmDeleteBtn) {
+    confirmDeleteBtn.addEventListener("click", () => {
+      if (addressToDeleteId !== null) {
+        addresses = addresses.filter((a) => a.id !== addressToDeleteId);
+        addressToDeleteId = null;
+        renderAddresses();
+        closeModal(deleteModal);
+      }
+    });
+  }
+
+  if (addressForm) {
+    addressForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const id = addressIdInput.value
+        ? Number(addressIdInput.value)
+        : Date.now();
+      const isMain = modalIsMain.checked;
+
+      if (isMain) {
+        addresses.forEach((a) => (a.isMain = false));
+      }
+
+      const addressData = {
+        id,
+        recipient: modalRecipient.value,
+        phone: modalPhone.value,
+        extraPhone: modalExtraPhone.value,
+        region: modalRegion.value,
+        isPickup: modalPickup.checked,
+        address: modalAddress.value,
+        isMain: isMain,
+      };
+
+      if (addressIdInput.value) {
+        const index = addresses.findIndex((a) => a.id === id);
+        addresses[index] = addressData;
+      } else {
+        addresses.push(addressData);
+      }
+
       renderAddresses();
-      closeModal(deleteModal);
-    }
-  });
-
-  addressForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const id = addressIdInput.value ? Number(addressIdInput.value) : Date.now();
-    const isMain = modalIsMain.checked;
-
-    if (isMain) {
-      addresses.forEach((a) => (a.isMain = false));
-    }
-
-    const addressData = {
-      id,
-      recipient: modalRecipient.value,
-      phone: modalPhone.value,
-      extraPhone: modalExtraPhone.value,
-      region: modalRegion.value,
-      isPickup: modalPickup.checked,
-      address: modalAddress.value,
-      isMain: isMain,
-    };
-
-    if (addressIdInput.value) {
-      const index = addresses.findIndex((a) => a.id === id);
-      addresses[index] = addressData;
-    } else {
-      addresses.push(addressData);
-    }
-
-    renderAddresses();
-    closeModal(addressModal);
-  });
+      closeModal(addressModal);
+    });
+  }
 
   renderAddresses();
 });

@@ -1017,6 +1017,7 @@ body.no-scroll {
 .home-tab-container .tab-wrapper .tab-pane input:focus {
   outline: none;
   box-shadow: none;
+  border-color: var(--blue);
 }
 
 .home-tab-container .tab-wrapper .tab-pane input::placeholder {
@@ -2471,11 +2472,11 @@ body.no-scroll {
 /* PROFILE END */
 
 /* PACKAGE PAGE START */
-/* .pack-container {
+.pack-container {
   background-color: #f2f2f2;
-  padding: clamp(20px, 4vw, 50px) 0;
+  /* padding: clamp(20px, 4vw, 50px) 0; */
   min-height: 100vh;
-} */
+}
 .pack-wrapper {
   padding: clamp(20px, 4vw, 50px) 0;
 }
@@ -2491,5 +2492,79 @@ body.no-scroll {
   color: var(--black);
   line-height: 130%;
   letter-spacing: 0;
+}
+
+.track-wrapper {
+  background-color: var(--white);
+  border-radius: var(--br-sm-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2vw, 32px);
+}
+
+.track-wrapper .track-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--white-grey);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  border: none;
+  width: 100%;
+  line-height: 120%;
+}
+
+.track-wrapper .track-icon img {
+  width: 20px;
+  height: 20px;
+}
+
+.track-wrapper form .form-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.track-wrapper form .form-item input {
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  padding: clamp(10px, 1.5vw, 20px) clamp(14px, 1.5vw, 24px);
+  border-radius: var(--br-sm);
+  font-weight: 400;
+  font-size: var(--fs-sm);
+  color: var(--black);
+  letter-spacing: 0;
+  line-height: 130%;
+}
+
+.track-wrapper form .form-item input:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: var(--blue);
+}
+
+.track-wrapper form .form-item input::placeholder {
+  color: var(--white-grey);
+}
+
+.track-wrapper form .form-item button {
+  padding: clamp(10px, 1.5vw, 20px);
+  width: 100%;
+  background-color: var(--green);
+  color: var(--blue);
+  font-weight: 600;
+  font-size: var(--fs-sm-sm);
+  border: none;
+  border-radius: var(--br-md);
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+}
+
+.track-wrapper form .form-item button:hover {
+  background-color: var(--blue);
+  color: var(--white);
 }
 /* PACKAGE PAGE END */
