@@ -841,20 +841,59 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 //============================== PACKAGE PAGE ACCORDION ===========================
-document.addEventListener("DOMContentLoaded", () => {
-  const packageItems = document.querySelectorAll(".package-item");
+document.addEventListener('DOMContentLoaded', () => {
+  const packageItems = document.querySelectorAll('.package-item');
 
   packageItems.forEach((item) => {
-    const header = item.querySelector(".package-item-header");
+    const header = item.querySelector('.package-item-header');
 
-    header.addEventListener("click", () => {
+    header.addEventListener('click', () => {
       packageItems.forEach((otherItem) => {
         if (otherItem !== item) {
-          otherItem.classList.remove("active");
+          otherItem.classList.remove('active');
         }
       });
-
-      item.classList.toggle("active");
+      item.classList.toggle('active');
     });
   });
+
+  const INITIAL_VISIBLE_COUNT = 10;
+  const showMoreBtn = document.getElementById('showMoreBtn');
+  const showMoreWrapper = document.querySelector('.show-more-wrapper');
+  let isExpanded = false;
+
+  function updateItemsVisibility() {
+    if (packageItems.length <= INITIAL_VISIBLE_COUNT) {
+      if (showMoreWrapper) showMoreWrapper.style.display = 'none';
+      return;
+    }
+
+    packageItems.forEach((item, index) => {
+      if (index >= INITIAL_VISIBLE_COUNT) {
+        if (isExpanded) {
+          item.classList.remove('is-hidden');
+        } else {
+          item.classList.add('is-hidden');
+        }
+      }
+    });
+
+    const btnText = showMoreBtn.querySelector('span');
+    if (isExpanded) {
+      btnText.textContent = 'Скрыть';
+      showMoreBtn.classList.add('is-expanded');
+    } else {
+      btnText.textContent = 'Показать все';
+      showMoreBtn.classList.remove('is-expanded');
+    }
+  }
+
+  if (showMoreBtn) {
+    showMoreBtn.addEventListener('click', () => {
+      isExpanded = !isExpanded;
+      updateItemsVisibility();
+    });
+  }
+
+  updateItemsVisibility();
 });

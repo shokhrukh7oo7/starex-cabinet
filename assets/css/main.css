@@ -2697,3 +2697,37 @@ body.no-scroll {
 .package-item.active .toggle-btn {
   transform: rotate(180deg);
 }
+
+.package-item.is-hidden {
+  display: none !important;
+}
+
+.show-more-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-show-more {
+  padding: clamp(10px, 1.5vw, 20px) clamp(20px, 3vw, 40px);
+  background-color: var(--green);
+  color: var(--blue);
+  font-weight: 600;
+  font-size: var(--fs-sm-sm);
+  border: none;
+  border-radius: var(--br-md);
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-show-more:hover {
+  background-color: var(--blue);
+  color: var(--white);
+}
+
+.btn-show-more .arrow-icon {
+  transition: transform 0.3s ease;
+}
+
+.btn-show-more.is-expanded img {
+  transform: rotate(180deg);
+}
