@@ -322,6 +322,14 @@
     grid-template-columns: 1fr;
     gap: 5px;
   }
+  .parcels-section .filters-bar .filter-group {
+    justify-content: center;
+    margin: 0 auto;
+  }
+  .parcels-section .filters-bar .filter-group .filter-label {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 @media (max-width: 600px) {
