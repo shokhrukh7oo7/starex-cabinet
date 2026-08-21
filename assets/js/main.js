@@ -600,7 +600,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalIsMain = document.getElementById("modalIsMain");
 
   function renderAddresses() {
-    if(!addressesListEl)  return;
+    if (!addressesListEl) return;
 
     addressesListEl.innerHTML = "";
 
@@ -838,5 +838,23 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.innerWidth >= 992) {
       closeProfileSidebar();
     }
+  });
+});
+//============================== PACKAGE PAGE ACCORDION ===========================
+document.addEventListener("DOMContentLoaded", () => {
+  const packageItems = document.querySelectorAll(".package-item");
+
+  packageItems.forEach((item) => {
+    const header = item.querySelector(".package-item-header");
+
+    header.addEventListener("click", () => {
+      packageItems.forEach((otherItem) => {
+        if (otherItem !== item) {
+          otherItem.classList.remove("active");
+        }
+      });
+
+      item.classList.toggle("active");
+    });
   });
 });

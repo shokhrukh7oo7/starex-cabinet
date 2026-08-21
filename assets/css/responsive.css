@@ -376,4 +376,15 @@
     .profile-title {
     text-align: center;
   }
+  .package-list-wrapper .package-list .package-item-main .parcel-icon {
+    display: none;
+  }
+  .parcel-card .parcel-route .location-pill {
+    flex-direction: column;
+    border: none;
+    padding: 0;
+  }
+  .parcel-card .parcel-route .location-pill img {
+    display: none;
+  }
 }

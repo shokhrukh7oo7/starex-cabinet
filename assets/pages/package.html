@@ -204,6 +204,257 @@
                   <button class="btn-track">Наблюдать</button>
                 </div>
               </form>
+
+              <div class="parcels-section">
+                <div class="filters-bar">
+                  <div class="filter-group">
+                    <button class="filter-btn active">Все</button>
+                    <button class="filter-btn">Отправитель</button>
+                    <button class="filter-btn">Получатель</button>
+                  </div>
+
+                  <div class="filter-group status-filters">
+                    <span class="filter-label">Сортировать по статусу:</span>
+                    <button class="filter-btn active">Все</button>
+                    <button class="filter-btn status-new">
+                      <span class="dot"></span>Новый
+                    </button>
+                    <button class="filter-btn status-stock">
+                      <span class="dot"></span>На складе
+                    </button>
+                    <button class="filter-btn status-sorting">
+                      <span class="dot"></span>Сортируется
+                    </button>
+                    <button class="filter-btn status-sent">
+                      <span class="dot"></span>Отправлено
+                    </button>
+                    <button class="filter-btn status-transit">
+                      <span class="dot"></span>В пути
+                    </button>
+                    <button class="filter-btn status-ready">
+                      <span class="dot"></span>Готов к выдаче
+                    </button>
+                    <button class="filter-btn status-courier">
+                      <span class="dot"></span>У курьера
+                    </button>
+                    <button class="filter-btn status-returned">
+                      <span class="dot"></span>Возвращен на склад
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="package-list-wrapper">
+                <div class="package-list">
+                  <div class="package-item">
+                    <div class="package-item-header">
+                      <div class="package-item-main">
+                        <div class="parcel-icon">
+                          <img src="/assets/images/home/box.svg" alt="box" />
+                        </div>
+                        <div class="package-item-info">
+                          <h3 class="parcel-title">ID: #TRK-998-2024-001</h3>
+                          <span class="parcel-id">23.07.2026</span>
+                        </div>
+                      </div>
+
+                      <div class="package-item-meta">
+                        <span class="status-badge status-in-transit"
+                          >В пути</span
+                        >
+                        <button
+                          class="toggle-btn"
+                          aria-label="Развернуть details"
+                        >
+                          <img src="/assets/images/arrow-bottom.svg" alt="image">
+                        </button>
+                      </div>
+                    </div>
+
+                    <div class="parcel-card-wrapper">
+                      <div class="parcel-card">
+                        <div class="parcel-route">
+                          <div class="progress-line-container">
+                            <div class="progress-line"></div>
+                            <div class="progress-point"></div>
+                          </div>
+                          <div class="route-locations">
+                            <div class="location-pill">
+                              <img
+                                src="/assets/images/home/location.svg"
+                                alt="pin"
+                              />
+                              <span>Самарканд</span>
+                              <span class="date">12 Сен 2026</span>
+                            </div>
+                            <div class="location-pill">
+                              <img
+                                src="/assets/images/home/location.svg"
+                                alt="pin"
+                              />
+                              <span>Ташкент</span>
+                              <span class="date">22 Дек 2026</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Подробная информация -->
+                        <div class="parcel-details">
+                          <div class="detail-block">
+                            <span class="detail-label">ОТПРАВИТЕЛЬ</span>
+                            <p class="detail-name">Иванова Мария Сергеевна</p>
+                            <p class="detail-address">
+                              ул. Чиланзар, 3, Ориент Финанс Банк
+                            </p>
+                          </div>
+
+                          <div class="detail-block">
+                            <span class="detail-label">ПОЛУЧАТЕЛЬ</span>
+                            <p class="detail-name">
+                              Абдуллаев Рустам Джамшедович
+                            </p>
+                            <p class="detail-address">
+                              ул. Регистан, 12, Торговый центр «Сийсат»
+                            </p>
+                          </div>
+
+                          <div class="detail-block">
+                            <span class="detail-label">ОПИСАНИЕ ПОСЫЛКИ</span>
+                            <p class="detail-desc">
+                              Техническая документация и комплект запчастей для
+                              промышленного оборудования.
+                            </p>
+                          </div>
+
+                          <div class="detail-row">
+                            <div class="detail-block">
+                              <span class="detail-label">ГАБАРИТЫ</span>
+                              <p class="detail-val">40x30x20 см</p>
+                            </div>
+                            <div class="detail-block">
+                              <span class="detail-label">ВЕС</span>
+                              <p class="detail-val">4.2 кг</p>
+                            </div>
+                          </div>
+
+                          <button class="track-action-btn">
+                            Отслеживать
+                            <img
+                              src="/assets/images/home/location.svg"
+                              alt="pin"
+                            />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="package-list">
+                  <div class="package-item">
+                    <div class="package-item-header">
+                      <div class="package-item-main">
+                        <div class="parcel-icon">
+                          <img src="/assets/images/home/box.svg" alt="box" />
+                        </div>
+                        <div class="package-item-info">
+                          <h3 class="parcel-title">ID: #TRK-777-2026-007</h3>
+                          <span class="parcel-id">04.12.2026</span>
+                        </div>
+                      </div>
+
+                      <div class="package-item-meta">
+                        <span class="status-badge status-in-transit"
+                          >В пути</span
+                        >
+                        <button
+                          class="toggle-btn"
+                          aria-label="Развернуть details"
+                        >
+                          <img src="/assets/images/arrow-bottom.svg" alt="image">
+                        </button>
+                      </div>
+                    </div>
+
+                    <div class="parcel-card-wrapper">
+                      <div class="parcel-card">
+                        <div class="parcel-route">
+                          <div class="progress-line-container">
+                            <div class="progress-line"></div>
+                            <div class="progress-point"></div>
+                          </div>
+                          <div class="route-locations">
+                            <div class="location-pill">
+                              <img
+                                src="/assets/images/home/location.svg"
+                                alt="pin"
+                              />
+                              <span>Самарканд</span>
+                              <span class="date">12 Сен 2026</span>
+                            </div>
+                            <div class="location-pill">
+                              <img
+                                src="/assets/images/home/location.svg"
+                                alt="pin"
+                              />
+                              <span>Ташкент</span>
+                              <span class="date">22 Дек 2026</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Подробная информация -->
+                        <div class="parcel-details">
+                          <div class="detail-block">
+                            <span class="detail-label">ОТПРАВИТЕЛЬ</span>
+                            <p class="detail-name">Иванова Мария Сергеевна</p>
+                            <p class="detail-address">
+                              ул. Чиланзар, 3, Ориент Финанс Банк
+                            </p>
+                          </div>
+
+                          <div class="detail-block">
+                            <span class="detail-label">ПОЛУЧАТЕЛЬ</span>
+                            <p class="detail-name">
+                              Абдуллаев Рустам Джамшедович
+                            </p>
+                            <p class="detail-address">
+                              ул. Регистан, 12, Торговый центр «Сийсат»
+                            </p>
+                          </div>
+
+                          <div class="detail-block">
+                            <span class="detail-label">ОПИСАНИЕ ПОСЫЛКИ</span>
+                            <p class="detail-desc">
+                              Техническая документация и комплект запчастей для
+                              промышленного оборудования.
+                            </p>
+                          </div>
+
+                          <div class="detail-row">
+                            <div class="detail-block">
+                              <span class="detail-label">ГАБАРИТЫ</span>
+                              <p class="detail-val">40x30x20 см</p>
+                            </div>
+                            <div class="detail-block">
+                              <span class="detail-label">ВЕС</span>
+                              <p class="detail-val">4.2 кг</p>
+                            </div>
+                          </div>
+
+                          <button class="track-action-btn">
+                            Отслеживать
+                            <img
+                              src="/assets/images/home/location.svg"
+                              alt="pin"
+                            />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
